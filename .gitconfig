@@ -1,0 +1,26 @@
+[user]
+	name = Rogier Wessel
+	email = rhwessel@xs4all.nl
+[core]
+	autocrlf = input
+	safecrlf = warn
+	excludesfile = ~/.gitignore_global
+[gitflow "branch"]
+    master = master
+    evelop = develop
+[gitflow "prefix"]
+    feature = feature/
+    release = release/
+    hotfix = hotfix/
+    support = support/
+    versiontag = version-
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+  	dump = cat-file -p
+[push]
+	default = simple

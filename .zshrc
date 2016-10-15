@@ -62,7 +62,6 @@ ENABLE_CORRECTION="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(aws docker git git-flow tmux web-search osx bundler rake ruby)
 
-
 # User configuration
 
 #export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
@@ -82,8 +81,8 @@ export LANGUAGE=en_US.utf8
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   #export EDITOR='atom'
-   export EDITOR='vim'
+   export EDITOR='atom'
+  #  export EDITOR='vim'
  fi
 
 # Compilation flags
@@ -102,8 +101,6 @@ export LANGUAGE=en_US.utf8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # suffix aliases
-alias -s log="less -MN"
-
 # some generics
 alias ls='ls -ls'
 alias ll='ls -lA'
@@ -124,9 +121,6 @@ alias gk='gitk --all&'
 alias gx='gitx --all'
 
 # ssh
-alias xs='ssh xs8'
-alias blij='ssh blij'
-alias aramaki='ssh -XC aramaki'
 alias x2x='ssh -XC ishikawa x2x -east -to :0'
 
 # tmux
@@ -139,9 +133,6 @@ alias screenwork='xrandr -s 1920x1080'
 alias screenmac='xrandr -s 1280x800'
 alias kssh='killall ssh && exit'
 alias fixdropbox='dropbox stop && sleep 10 && echo fs.inotify.max_user_watches=10000000 | sudo tee -a /etc/sysctl.conf; sudo sysctl -p && dropbox start'
-alias vncviewer='vncviewer -Fullscreen localhost:1'
-alias vncserver='~/Bin/vnc.sh'
-alias nmapplet='sudo nm-applet'
 alias muttrm='mutt -F ~/.muttrcrm'
 alias nb='rm -f ~/.newsbeuter/cache.db && newsbeuter'
 alias serv='python -m SimpleHTTPServer 8088'
@@ -161,13 +152,8 @@ alias dk-clean-containers='printf "\n>>> Deleting stopped containers\n\n" && doc
 alias dk-clean-images='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
 # Delete all stopped containers and untagged images.
 alias dk-clean='dk-clean-containers || true && dk-clean-images'
-alias dm-dev='docker-machine env dev'
-alias marathonctl='docker run --rm --net=host -v /data/marathon/:/marathon/ shoenig/marathonctl:latest'
 
-# vpn
-alias rm-vpn-np='sudo openvpn --config ~/.vpn/nonprod.ovpn'
-alias rm-vpn-p='sudo openvpn --config ~/.vpn/prod.ovpn'
-alias vpn='sudo openvpn --config ~/.vpn/client-batou.ovpn'
+alias marathonctl='docker run --rm --net=host -v /data/marathon/:/marathon/ shoenig/marathonctl:latest'
 
 # open crypted docs
 alias unlock='printf "\n unlocking \n" \
@@ -209,23 +195,4 @@ alias unlock-workspace='encfs -i=5 ~/Dropbox/Crypt-workspace ~/workspace'
 alias lock-wip='fusermount -u ~/WIP'
 alias unlock-wip='encfs -i=5 ~/Dropbox/Crypt-wip ~/WIP'
 
-alias pdi60='clear && export KETTLE_HOME=~/Conf/kettle && export PENTAHO_JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre && cd $HOME/App/pdi60 && sh spoon.sh'
-alias pdi61='clear && export KETTLE_HOME=~/Conf/kettle && export PENTAHO_JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre && cd $HOME/App/pdi-ce-6.1.0.1-196 && sh spoon.sh'
-
-#alias jekyll-serve='docker run --rm -v "$PWD:/src" -p 4000:4000 jekyll serve -H 0.0.0.0'
-#alias jekyll-build='docker run --rm -v "$PWD:/src" -p 4000:4000 jekyll build'
-#alias jekyll='docker run --rm -v "$PWD:/src" -p 4000:4000 jekyll build'
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f /Users/rogier/google-cloud-sdk/path.zsh.inc ]; then
-  source '/Users/rogier/google-cloud-sdk/path.zsh.inc'
-fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f /Users/rogier/google-cloud-sdk/completion.zsh.inc ]; then
-  source '/Users/rogier/google-cloud-sdk/completion.zsh.inc'
-fi
-
-source /Users/rogier/.dvm/dvm.sh
+alias pdi='clear && export KETTLE_HOME=~/Conf/kettle && export PENTAHO_JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre && cd $HOME/App/pdi-ce-6.1.0.1-196 && sh spoon.sh'
