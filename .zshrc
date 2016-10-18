@@ -66,8 +66,8 @@ plugins=(aws docker git git-flow tmux web-search osx bundler rake ruby)
 
 #export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 #export PATH="/Users/rogier/usr/lib/go//bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Users/rogier/bin"
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/home/rogier/Bin"
-export PATH=$PATH:/Users/rogier/.minimesos/bin
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:$HOME/Bin"
+export PATH=$PATH:$HOME/.minimesos/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -195,4 +195,6 @@ alias unlock-workspace='encfs -i=5 ~/Dropbox/Crypt-workspace ~/workspace'
 alias lock-wip='fusermount -u ~/WIP'
 alias unlock-wip='encfs -i=5 ~/Dropbox/Crypt-wip ~/WIP'
 
-alias pdi='clear && export KETTLE_HOME=~/Conf/kettle && export PENTAHO_JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre && cd $HOME/App/pdi-ce-6.1.0.1-196 && sh spoon.sh'
+alias pdi-rm='clear && export KETTLE_HOME=~/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre && cd $HOME/App/pdi-ce-6.1.0.1-196 && sh spoon.sh'
+
+source $HOME/.dvm/dvm.sh
