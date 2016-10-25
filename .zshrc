@@ -152,9 +152,9 @@ alias dk-clean-containers='printf "\n>>> Deleting stopped containers\n\n" && doc
 alias dk-clean-images='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
 # Delete all stopped containers and untagged images.
 alias dk-clean='dk-clean-containers || true && dk-clean-images'
-
 alias marathonctl='docker run --rm --net=host -v /data/marathon/:/marathon/ shoenig/marathonctl:latest'
 
+alias dcu='dc kill && dc rm -f && dc up -d && dc logs'
 # open crypted docs
 alias unlock='printf "\n unlocking \n" \
   unlock-app && \
@@ -183,7 +183,7 @@ alias unlock-git='encfs -i=5 ~/Dropbox/Crypt-git ~/git-db'
 alias lock-music='fusermount -u ~/Crypt-music'
 alias unlock-music='encfs -i=5 ~/Dropbox/Crypt-music ~/Crypt-music'
 alias lock-personal='fusermount -u ~/Documents'
-alias unlock-personal='encfs -i=5 ~/Dropbox/Crypt-personal ~/Documents'
+alias unlock-personal='encfs -i=5 ~/Dropbox/Crypt-personal ~/Crypt-personal'
 alias lock-software='fusermount -u ~/Software'
 alias unlock-software='encfs -i=5 ~/Dropbox/Crypt-software ~/Software'
 alias lock-mysql='fusermount -u ~/Crypt-mysql'
