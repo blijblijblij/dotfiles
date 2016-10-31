@@ -154,7 +154,7 @@ alias dk-clean-images='printf "\n>>> Deleting untagged images\n\n" && docker rmi
 alias dk-clean='dk-clean-containers || true && dk-clean-images'
 alias marathonctl='docker run --rm --net=host -v /data/marathon/:/marathon/ shoenig/marathonctl:latest'
 
-alias dcu='dc kill && dc rm -f && dc up -d && dc logs'
+alias dcu='cd ~/git/rm-docker/rwessel && dc kill && dc rm -f && dc up -d && dc logs'
 # open crypted docs
 alias unlock='printf "\n unlocking \n" \
   unlock-app && \
