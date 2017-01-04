@@ -1,15 +1,21 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+export RBENV_ROOT="/usr/local/var/rbenv"
 eval "$(rbenv init -)"
 
-LANG="en_US.UTF-8"
-LC_COLLATE="en_US.UTF-8"
-LC_CTYPE="en_US.UTF-8"
-LC_MESSAGES="en_US.UTF-8"
-LC_MONETARY="en_US.UTF-8"
-LC_NUMERIC="en_US.UTF-8"
-LC_TIME="en_US.UTF-8"
-LC_ALL="en_US.UTF-8"
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+#LANG="en_US.UTF-8"
+#LC_COLLATE="en_US.UTF-8"
+#LC_CTYPE="en_US.UTF-8"
+#LC_MESSAGES="en_US.UTF-8"
+#LC_MONETARY="en_US.UTF-8"
+#LC_NUMERIC="en_US.UTF-8"
+#LC_TIME="en_US.UTF-8"
+#LC_ALL="en_US.UTF-8"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -60,7 +66,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws docker git git-flow tmux web-search osx bundler rake ruby)
+plugins=(aws docker git git-flow tmux web-search osx bundler rake ruby rbenv)
 
 # User configuration
 
@@ -76,13 +82,14 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.utf8
 export LANGUAGE=en_US.utf8
+export GIT_EDITOR=vim
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   export EDITOR='atom'
-  #  export EDITOR='vim'
+  # export EDITOR='atom'
+    export EDITOR='vim'
  fi
 
 # Compilation flags
@@ -154,47 +161,35 @@ alias dk-clean-images='printf "\n>>> Deleting untagged images\n\n" && docker rmi
 alias dk-clean='dk-clean-containers || true && dk-clean-images'
 alias marathonctl='docker run --rm --net=host -v /data/marathon/:/marathon/ shoenig/marathonctl:latest'
 
-alias dcu='cd ~/git/rm-docker/rwessel && dc kill && dc rm -f && dc up -d && dc logs'
+alias dcu='cd ~/git/rm-docker/rwessel && dc kill && dc rm -f && dc up -d registry postgres && sleep 5 && dc up -d && dc logs -f'
 # open crypted docs
 alias unlock='printf "\n unlocking \n" \
-  unlock-app && \
   unlock-bin && \
   unlock-conf && \
-  unlock-data && \
-  unlock-software && \
   unlock-personal && \
   unlock-rm && \
   unlock-wip'
 
 alias lock-archive='fusermount -u ~/Crypt-archive'
 alias unlock-archive='encfs -i=5 ~/Dropbox/Crypt-archive ~/Crypt-archive'
-alias lock-app='fusermount -u ~/App'
-alias unlock-app='encfs -i=5 ~/Dropbox/Crypt-app ~/App'
 alias lock-bin='fusermount -u ~/Bin'
 alias unlock-bin='encfs -i=5 ~/Dropbox/Crypt-bin ~/Bin'
 alias lock-conf='fusermount -u ~/Conf'
 alias unlock-conf='encfs -i=5 ~/Dropbox/Crypt-conf ~/Conf'
-alias lock-data='fusermount -u ~/Crypt-data'
-alias unlock-data='encfs -i=5 ~/Dropbox/Crypt-data ~/Crypt-data'
-alias lock-docker='fusermount -u ~/Crypt-docker'
-alias unlock-docker='encfs -i=5 ~/Dropbox/Crypt-docker ~/Crypt-docker'
 alias lock-git='fusermount -u ~/git-db'
 alias unlock-git='encfs -i=5 ~/Dropbox/Crypt-git ~/git-db'
-alias lock-music='fusermount -u ~/Crypt-music'
-alias unlock-music='encfs -i=5 ~/Dropbox/Crypt-music ~/Crypt-music'
 alias lock-personal='fusermount -u ~/Documents'
 alias unlock-personal='encfs -i=5 ~/Dropbox/Crypt-personal ~/Crypt-personal'
-alias lock-software='fusermount -u ~/Software'
-alias unlock-software='encfs -i=5 ~/Dropbox/Crypt-software ~/Software'
-alias lock-mysql='fusermount -u ~/Crypt-mysql'
-alias unlock-mysql='encfs -i=5 ~/Dropbox/Crypt-mysql ~/mysql'
 alias lock-rm='fusermount -u ~/Documents-rm'
 alias unlock-rm='encfs -i=5 ~/Dropbox/Crypt-rm ~/Documents-rm'
-alias lock-workspace='fusermount -u ~/workspace'
-alias unlock-workspace='encfs -i=5 ~/Dropbox/Crypt-workspace ~/workspace'
 alias lock-wip='fusermount -u ~/WIP'
 alias unlock-wip='encfs -i=5 ~/Dropbox/Crypt-wip ~/WIP'
 
-alias pdi-rm='clear && export KETTLE_HOME=~/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre && cd $HOME/App/pdi-ce-6.1.0.1-196 && sh spoon.sh'
+#alias pdi-rm='clear && export KETTLE_HOME=~/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre && cd $HOME/Applications/pdi-ce-6.1.0.1-196 && sh spoon.sh'
+alias pdi60='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
+alias pdi61='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.1.0.0-386 && sh spoon.sh'
+alias pdi70='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-7.0.0.0-25 && sh spoon.sh'
+#alias pdi='clear && export KETTLE_HOME=~/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.1.0.1-196 && sh spoon.sh'
 
 source $HOME/.dvm/dvm.sh
+export PATH="/usr/local/bin:$PATH"
