@@ -49,3 +49,5 @@ Thumbs.db
 .type.xml
 .envrc~
 *carte/.tmp
+
+*rds/.pgpass

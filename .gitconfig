@@ -13,7 +13,7 @@
     release = release/
     hotfix = hotfix/
     support = support/
-    versiontag = version-
+    versiontag = release-
 [alias]
 	co = checkout
 	ci = commit
