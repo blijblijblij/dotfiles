@@ -1,4 +1,9 @@
 # Path to your oh-my-zsh installation.
+
+echo ""
+fortune | cowsay | lolcat
+echo ""
+
 export ZSH=$HOME/.oh-my-zsh
 
 export PATH="$HOME/.rbenv/bin:$PATH"
