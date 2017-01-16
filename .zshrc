@@ -1,7 +1,8 @@
 # Path to your oh-my-zsh installation.
 
 echo ""
-fortune | cowsay | lolcat
+#fortune | cowsay | lolcat
+fortune | cowsay -f $(ls /usr/local/Cellar/cowsay/3.04/share/cows/*.cow | rl | head -n 1) | lolcat
 echo ""
 
 export ZSH=$HOME/.oh-my-zsh
@@ -114,7 +115,7 @@ export GIT_EDITOR=vim
 
 # suffix aliases
 # some generics
-alias ls='ls -ls'
+#alias ls='ls -ls'
 alias ll='ls -lA'
 alias df='df -h'
 # Some more alias to avoid making mistakes:
