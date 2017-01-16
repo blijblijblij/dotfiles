@@ -21,4 +21,3 @@ apm install minimap-highlight-selected
 
 # sql
 apm install format-sql
-apm install language-sql
