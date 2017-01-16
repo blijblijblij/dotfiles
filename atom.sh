@@ -5,6 +5,7 @@ apm install rubocop-auto-correct
 
 # nicer code
 apm install atom-beautify
+apm install vim-mode-plus
 
 # language highlighting
 apm install language-docker
@@ -18,3 +19,7 @@ apm install split-diff
 apm install todo-show
 apm install highlight-selected
 apm install minimap-highlight-selected
+
+# sql
+apm install format-sql
+apm install language-sql
