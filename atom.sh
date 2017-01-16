@@ -17,7 +17,6 @@ apm install project-manager
 apm install split-diff
 apm install todo-show
 apm install highlight-selected
-apm install minimap-highlight-selected
 
 # sql
 apm install format-sql
