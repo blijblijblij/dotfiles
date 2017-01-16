@@ -11,7 +11,6 @@ apm install vim-mode-plus
 apm install language-docker
 
 # other
-apm install minimap
 apm install toggle-quotes
 apm install trailing-spaces
 apm install project-manager
