@@ -158,14 +158,15 @@ alias dcs='dc kill && dc rm -f && dc up -d && dc logs'
 # Kill all running containers.
 alias dk-kill='docker kill $(docker ps -a -q)'
 # Remove all images
-alias dk-rm='docker rmi $(docker images -q)'
+alias dk-rm='docker rmi -f $(docker images -q)'
 # Delete all stopped containers.
-alias dk-clean-containers='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+alias dk-clean-containers='printf "\n>>> Deleting stopped containers\n\n" && docker rm -f $(docker ps -a -q)'
 # Delete all untagged images.
-alias dk-clean-images='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+alias dk-clean-images='printf "\n>>> Deleting untagged images\n\n" && docker rmi -f $(docker images -q -f dangling=true)'
+# Deleta all dangling volumes
+alias dk-clean-volumes='printf "\n>>> Deleting stopped volumes \n\n" && docker volume rm -f $(docker volume ls --filter dangling=true -q)'
 # Delete all stopped containers and untagged images.
-alias dk-clean='dk-clean-containers || true && dk-clean-images'
-alias marathonctl='docker run --rm --net=host -v /data/marathon/:/marathon/ shoenig/marathonctl:latest'
+alias dk-clean='dk-clean-containers || true && dk-clean-images || true && dk-clean-volumes'
 
 alias dcu='cd ~/git/rm-docker/rwessel && dc kill && dc rm -f && dc up -d registry postgres && sleep 5 && dc up -d && dc logs -f'
 # open crypted docs
