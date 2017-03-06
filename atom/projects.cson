@@ -1,0 +1,47 @@
+[
+  {
+    title: "Personal"
+    paths: [
+      "/Users/rogier/Dropbox/git/blijblijblij.github.io"
+      "/Users/rogier/Dropbox/git/blijblijblij.github.io-hugo"
+      "/Users/rogier/Dropbox/git/docker-mesos"
+      "/Users/rogier/Dropbox/git/docker-public"
+      "/Users/rogier/git/dotfiles"
+      "/Users/rogier/Dropbox/git/learning-ruby"
+      "/Users/rogier/Dropbox/git/playground"
+      "/Users/rogier/Dropbox/git/presentations"
+    ]
+  }
+  {
+    title: "Personal - var"
+    paths: [
+      "/Users/rogier/Dropbox/git/learning-python"
+      "/Users/rogier/git/curly-garbanzo"
+    ]
+  }
+  {
+    title: "Work"
+    paths: [
+      "/Users/rogier/git/rm-data-dev"
+      "/Users/rogier/git/rm-docker"
+      "/Users/rogier/git/rm-etl"
+      "/Users/rogier/git/rm-mesos"
+      "/Users/rogier/git/rm-pentaho"
+      "/Users/rogier/git/rm-scripts"
+      "/Users/rogier/git/rm-secrets"
+      "/Users/rogier/git/rm-system"
+    ]
+  }
+  {
+    title: "Work - var"
+    paths: [
+      "/Users/rogier/git/rm-data-admin"
+      "/Users/rogier/git/rm-documentation"
+      "/Users/rogier/git/rm-documentation.wiki"
+      "/Users/rogier/git/rm-masterdata-engine"
+      "/Users/rogier/git/rm-oidc-engine"
+      "/Users/rogier/git/rm-pentaho-openid-adapter"
+      "/Users/rogier/git/rm-rails"
+    ]
+  }
+]

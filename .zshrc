@@ -168,7 +168,7 @@ alias dk-clean-volumes='printf "\n>>> Deleting stopped volumes \n\n" && docker v
 # Delete all stopped containers and untagged images.
 alias dk-clean='dk-clean-containers || true && dk-clean-images || true && dk-clean-volumes'
 
-alias dcu='cd ~/git/rm-docker/rwessel && dc kill && dc rm -f && dc up -d registry postgres && sleep 5 && dc up -d && dc logs -f'
+alias dcu='cd ~/git/rm-docker/rwessel && dc stop && dc up -d registry postgres && sleep 5 && dc up -d && dc logs -f'
 # open crypted docs
 alias unlock='printf "\n unlocking \n" \
   unlock-bin && \
