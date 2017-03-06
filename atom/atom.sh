@@ -24,5 +24,5 @@
 # apm install format-sql
 
 echo "---> projects.cson"
-rm -f $HOME/git/dotfiles/atom/projects.cson
+rm -f $HOME/.atom/projects.cson
 ln -s $HOME/git/dotfiles/atom/projects.cson $HOME/.atom/projects.cson
