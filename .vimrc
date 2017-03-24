@@ -8,7 +8,7 @@
 
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
-runtime! debian.vim
+"runtime! debian.vim
 
 " Uncomment the next line to make Vim more Vi-compatible
 " NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
@@ -17,13 +17,17 @@ runtime! debian.vim
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
-syntax on
+syntax on 
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
+colorscheme solarized
+let g:solarized_termtrans = 1
+"colorscheme basic-dark
+"colorscheme railscasts
+"colorscheme vividchalk
 set background=dark
-" colorscheme solarized
-" let g:solarized_termtrans = 1
+"colorscheme material-theme
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -52,23 +56,30 @@ set background=dark
 
 " Source a global configuration file if available
 " XXX Deprecated, please move your changes here in /etc/vim/vimrc
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif
+"if filereadable("/etc/vim/vimrc.local")
+"  source /etc/vim/vimrc.local
+"endif
 
-set guifont=8x13bold
-
-" Highly recommended to set tab keys to 4 spaces
-set tabstop=4
-set shiftwidth=4
+"set guifont=8x13bold
 
 " You may want to turn off the beep sounds (if you want quite) with visual
 " bell
 "set vb
 
+" show line numbers
 set invnumber
 :nmap <C-N><C-N> :set invnumber <CR>
-let twitvim_login = "blijblijblij:hs3uf8je" 
-let twitvim_proxy = "wwwproxy.xs4all.nl:8080" 
-nnoremap <F8> :FriendsTwitter<cr>
-let twitvim_count = 65
+
+set nocompatible
+
+" indentation
+" load indent file for the current filetype
+filetype indent on
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+set smartindent
+set autoindent
+set expandtab
+set tabstop=2 shiftwidth=2 softtabstop=2
+
