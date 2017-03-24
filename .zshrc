@@ -1,27 +1,19 @@
 # Path to your oh-my-zsh installation.
 
-#echo ""
-#fortune | cowsay | lolcat
-#fortune | cowsay -f $(ls /usr/local/Cellar/cowsay/3.04/share/cows/*.cow | rl | head -n 1) | lolcat
-#echo ""
-
+# zsh
 export ZSH=$HOME/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-export RBENV_ROOT="/usr/local/var/rbenv"
-eval "$(rbenv init -)"
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-#LANG="en_US.UTF-8"
-#LC_COLLATE="en_US.UTF-8"
-#LC_CTYPE="en_US.UTF-8"
-#LC_MESSAGES="en_US.UTF-8"
-#LC_MONETARY="en_US.UTF-8"
-#LC_NUMERIC="en_US.UTF-8"
-#LC_TIME="en_US.UTF-8"
-#LC_ALL="en_US.UTF-8"
+# enc
+export LANG="en_US.UTF-8"
+export LC_COLLATE="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_MONETARY="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_TIME="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LANGUAGE=en_US.utf8
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -72,7 +64,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws docker git git-flow tmux web-search osx bundler rake ruby rbenv)
+plugins=(docker git git-flow tmux web-search osx bundler rake ruby rbenv)
 
 # User configuration
 
@@ -82,12 +74,11 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/lo
 export PATH=$PATH:$HOME/.minimesos/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source $ZSH/oh-my-zsh.sh
+# rb
+export PATH="$HOME/.rbenv/bin:$PATH"
+export RBENV_ROOT="/usr/local/var/rbenv"
+eval "$(rbenv init -)"
 
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.utf8
-export LANGUAGE=en_US.utf8
 export GIT_EDITOR=vim
 
 # Preferred editor for local and remote sessions
@@ -138,7 +129,6 @@ alias x2x='ssh -XC ishikawa x2x -east -to :0'
 
 # tmux
 alias tm='tmux attach-session || tmux'
-alias tmd='tmux detach'
 
 # some ugly fixes
 alias apt='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get clean'
@@ -169,35 +159,11 @@ alias dk-clean-volumes='printf "\n>>> Deleting stopped volumes \n\n" && docker v
 alias dk-clean='dk-clean-containers || true && dk-clean-images || true && dk-clean-volumes'
 
 alias dcu='cd ~/git/rm-docker/rwessel && dc stop && dc up -d registry postgres && sleep 5 && dc up -d && dc logs -f'
-# open crypted docs
-alias unlock='printf "\n unlocking \n" \
-  unlock-bin && \
-  unlock-conf && \
-  unlock-personal && \
-  unlock-rm && \
-  unlock-wip'
-
-alias lock-archive='fusermount -u ~/Crypt-archive'
-alias unlock-archive='encfs -i=5 ~/Dropbox/Crypt-archive ~/Crypt-archive'
-alias lock-bin='fusermount -u ~/Bin'
-alias unlock-bin='encfs -i=5 ~/Dropbox/Crypt-bin ~/Bin'
-alias lock-conf='fusermount -u ~/Conf'
-alias unlock-conf='encfs -i=5 ~/Dropbox/Crypt-conf ~/Conf'
-alias lock-git='fusermount -u ~/git-db'
-alias unlock-git='encfs -i=5 ~/Dropbox/Crypt-git ~/git-db'
-alias lock-personal='fusermount -u ~/Documents'
-alias unlock-personal='encfs -i=5 ~/Dropbox/Crypt-personal ~/Crypt-personal'
-alias lock-rm='fusermount -u ~/Documents-rm'
-alias unlock-rm='encfs -i=5 ~/Dropbox/Crypt-rm ~/Documents-rm'
-alias lock-wip='fusermount -u ~/WIP'
-alias unlock-wip='encfs -i=5 ~/Dropbox/Crypt-wip ~/WIP'
 
 #alias pdi-rm='clear && export KETTLE_HOME=~/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre && cd $HOME/Applications/pdi-ce-6.1.0.1-196 && sh spoon.sh'
 alias pdi60='clear export KETTLE_HOME=$HOME/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
 alias pdi61='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.1.0.0-386 && sh spoon.sh'
 alias pdi70='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-7.0.0.0-25 && sh spoon.sh'
-
-export PATH="/usr/local/bin:$PATH"
 
 # Always work in a tmux session if tmux is installed
 if which tmux 2>&1 >/dev/null; then
