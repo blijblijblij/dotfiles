@@ -1,7 +1,11 @@
 #!/bin/bash
 echo "setting up atom"
 echo "---> addons"
-apm install linter # Base linter
+# Base linter
+apm install linter
+apm install linter-ui-default
+apm install busy-signal
+apm install intentions
 apm install linter-rubocop
 apm install rubocop-auto-correct
 
