@@ -1,9 +1,9 @@
 # Path to your oh-my-zsh installation.
 
-echo ""
+#echo ""
 #fortune | cowsay | lolcat
-fortune | cowsay -f $(ls /usr/local/Cellar/cowsay/3.04/share/cows/*.cow | rl | head -n 1) | lolcat
-echo ""
+#fortune | cowsay -f $(ls /usr/local/Cellar/cowsay/3.04/share/cows/*.cow | rl | head -n 1) | lolcat
+#echo ""
 
 export ZSH=$HOME/.oh-my-zsh
 
@@ -193,10 +193,15 @@ alias lock-wip='fusermount -u ~/WIP'
 alias unlock-wip='encfs -i=5 ~/Dropbox/Crypt-wip ~/WIP'
 
 #alias pdi-rm='clear && export KETTLE_HOME=~/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre && cd $HOME/Applications/pdi-ce-6.1.0.1-196 && sh spoon.sh'
-alias pdi60='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
+alias pdi60='clear export KETTLE_HOME=$HOME/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
 alias pdi61='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.1.0.0-386 && sh spoon.sh'
 alias pdi70='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-7.0.0.0-25 && sh spoon.sh'
-#alias pdi='clear && export KETTLE_HOME=~/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.1.0.1-196 && sh spoon.sh'
 
-source $HOME/.dvm/dvm.sh
 export PATH="/usr/local/bin:$PATH"
+
+# Always work in a tmux session if tmux is installed
+if which tmux 2>&1 >/dev/null; then
+  if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
+    tmux attach -t hack || tmux new -s hack; exit
+  fi
+fi
