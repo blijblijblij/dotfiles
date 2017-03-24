@@ -1,7 +1,6 @@
 # Path to your oh-my-zsh installation.
 
-
-# enc
+#env
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
@@ -64,49 +63,29 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker git git-flow tmux web-search osx bundler rake ruby rbenv)
+plugins=(docker git git-flow tmux bundler rake ruby)
 
 # User configuration
-
-#export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
-#export PATH="/Users/rogier/usr/lib/go//bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Users/rogier/bin"
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:$HOME/Bin"
-export PATH=$PATH:$HOME/.minimesos/bin
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/rogier/Bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# rb
-export PATH="$HOME/.rbenv/bin:$PATH"
-export RBENV_ROOT="/usr/local/var/rbenv"
-eval "$(rbenv init -)"
-
-export GIT_EDITOR=vim
+source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
- else
-  # export EDITOR='atom'
-    export EDITOR='vim'
- fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='atom'
+fi
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # suffix aliases
+alias -s log="less -MN"
+
 # some generics
-#alias ls='ls -ls'
+alias ls='ls -ls'
 alias ll='ls -lA'
 alias df='df -h'
 # Some more alias to avoid making mistakes:
@@ -125,10 +104,14 @@ alias gk='gitk --all&'
 alias gx='gitx --all'
 
 # ssh
+alias xs='ssh xs8'
+alias blij='ssh blij'
+alias aramaki='ssh -XC aramaki'
 alias x2x='ssh -XC ishikawa x2x -east -to :0'
 
 # tmux
-alias tm='tmux attach-session || tmux'
+alias tm='tmux attach -t hack || tmux new -s hack; exit'
+alias tmd='tmux detach'
 
 # some ugly fixes
 alias apt='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get clean'
@@ -136,6 +119,8 @@ alias screenwork='xrandr -s 1920x1080'
 alias screenmac='xrandr -s 1280x800'
 alias kssh='killall ssh && exit'
 alias fixdropbox='dropbox stop && sleep 10 && echo fs.inotify.max_user_watches=10000000 | sudo tee -a /etc/sysctl.conf; sudo sysctl -p && dropbox start'
+alias vncviewer='vncviewer -Fullscreen localhost:1'
+alias vncserver='~/Bin/vnc.sh'
 alias muttrm='mutt -F ~/.muttrcrm'
 alias nb='rm -f ~/.newsbeuter/cache.db && newsbeuter'
 alias serv='python -m SimpleHTTPServer 8088'
@@ -160,14 +145,14 @@ alias dk-clean='dk-clean-containers || true && dk-clean-images || true && dk-cle
 
 alias dcu='cd ~/git/rm-docker/rwessel && dc stop && dc up -d registry postgres && sleep 5 && dc up -d && dc logs -f'
 
-#alias pdi-rm='clear && export KETTLE_HOME=~/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre && cd $HOME/Applications/pdi-ce-6.1.0.1-196 && sh spoon.sh'
-alias pdi60='clear export KETTLE_HOME=$HOME/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
-alias pdi61='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.1.0.0-386 && sh spoon.sh'
-alias pdi70='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-7.0.0.0-25 && sh spoon.sh'
+alias pdi='clear export KETTLE_HOME=$HOME/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
+
+# Load up ssh keys
+ssh-add -A &> /dev/null
 
 # Always work in a tmux session if tmux is installed
-if which tmux 2>&1 >/dev/null; then
-  if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
-    tmux attach -t hack || tmux new -s hack; exit
-  fi
-fi
+#if which tmux 2>&1 >/dev/null; then
+#  if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
+#    tmux attach -t hack || tmux new -s hack; exit
+#  fi
+#fi
