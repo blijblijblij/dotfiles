@@ -114,11 +114,15 @@ alias tm='tmux attach -t hack || tmux new -s hack; exit'
 alias tmd='tmux detach'
 
 # some ugly fixes
-alias apt='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get clean'
+alias apt='sudo apt-get update && sudo apt-get -y upgrade && \
+  sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && \
+  sudo apt-get clean'
 alias screenwork='xrandr -s 1920x1080'
 alias screenmac='xrandr -s 1280x800'
 alias kssh='killall ssh && exit'
-alias fixdropbox='dropbox stop && sleep 10 && echo fs.inotify.max_user_watches=10000000 | sudo tee -a /etc/sysctl.conf; sudo sysctl -p && dropbox start'
+alias fixdropbox='dropbox stop && sleep 10 && \
+  echo fs.inotify.max_user_watches=10000000 | sudo tee -a /etc/sysctl.conf; \
+  sudo sysctl -p && dropbox start'
 alias vncviewer='vncviewer -Fullscreen localhost:1'
 alias vncserver='~/Bin/vnc.sh'
 alias muttrm='mutt -F ~/.muttrcrm'
