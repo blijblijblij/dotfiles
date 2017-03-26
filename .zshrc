@@ -63,13 +63,18 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker git git-flow tmux bundler rake ruby)
+plugins=(docker git git-flow tmux bundler rake ruby rbenv)
 
 # User configuration
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/rogier/Bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+#export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+export RBENV_ROOT="/usr/local/var/rbenv"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
