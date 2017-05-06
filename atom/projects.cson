@@ -10,19 +10,16 @@
       "/Users/rogier/Dropbox/git/learning-ruby"
       "/Users/rogier/Dropbox/git/playground"
       "/Users/rogier/Dropbox/git/presentations"
-    ]
-  }
-  {
-    title: "Personal - var"
-    paths: [
-      "/Users/rogier/Dropbox/git/learning-python"
       "/Users/rogier/git/curly-garbanzo"
+      "/Users/rogier/Dropbox/git/learning-python"
+      "/Users/rogier/git"
     ]
   }
   {
     title: "Work"
     paths: [
       "/Users/rogier/git/rm-data-dev"
+      "/Users/rogier/git/rm-ddl"
       "/Users/rogier/git/rm-docker"
       "/Users/rogier/git/rm-etl"
       "/Users/rogier/git/rm-mesos"
@@ -30,6 +27,7 @@
       "/Users/rogier/git/rm-scripts"
       "/Users/rogier/git/rm-secrets"
       "/Users/rogier/git/rm-system"
+      "/Users/rogier/git/rm-performance-jmeter"
     ]
   }
   {

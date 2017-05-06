@@ -8,6 +8,7 @@ apm install busy-signal
 apm install intentions
 apm install linter-rubocop
 apm install rubocop-auto-correct
+apm install language-haml
 
 # nicer code
 apm install atom-beautify
