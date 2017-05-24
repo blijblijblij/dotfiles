@@ -152,7 +152,7 @@ alias dk-clean-volumes='printf "\n>>> Deleting stopped volumes \n\n" && docker v
 # Delete all stopped containers and untagged images.
 alias dk-clean='dk-clean-containers || true && dk-clean-images || true && dk-clean-volumes'
 
-alias dcu='cd ~/git/rm-data-dev/docker && dc stop && dc up -d registry postgres && sleep 5 && dc up -d && dc logs -f'
+alias dcu='dc kill && dc rm -f && dc build && dc up -d postgres && sleep 5 && dc up -d && dc logs -f'
 
 #alias pdi='clear export KETTLE_HOME=$HOME/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
 alias pdi='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
