@@ -71,11 +71,6 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/lo
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-
-export RBENV_ROOT="/usr/local/var/rbenv"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
@@ -152,13 +147,31 @@ alias dk-clean-volumes='printf "\n>>> Deleting stopped volumes \n\n" && docker v
 # Delete all stopped containers and untagged images.
 alias dk-clean='dk-clean-containers || true && dk-clean-images || true && dk-clean-volumes'
 
-alias dcu='dc kill && dc rm -f && dc build && dc up -d postgres && sleep 5 && dc up -d && dc logs -f'
+alias dcu='dc kill && dc rm -f && dc build && dc up -d && dc logs -f'
 
 #alias pdi='clear export KETTLE_HOME=$HOME/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
-alias pdi='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
+# alias pdi='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
+alias pdi='clear && cd $HOME/App/pdi-ee-client-7.1.0.0-12/data-integration && sh spoon.sh'
 
 alias update-prod='dsh -c -g prod -M -w "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get clean"'
 alias update-nonprod='dsh -c -g nonprod -M -w "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get clean"'
+
+# open crypted docs
+alias unlock='unlock-bin && unlock-conf && unlock-wip && unlock-personal && unlock-rm'
+alias lock-archive='fusermount -u ~/Crypt-archive'
+alias unlock-archive='encfs -i=5 ~/Dropbox/Crypt-archive ~/Crypt-archive'
+alias lock-bin='fusermount -u ~/Bin'
+alias unlock-bin='encfs -i=5 ~/Dropbox/Crypt-bin ~/Bin'
+alias lock-conf='fusermount -u ~/Conf'
+alias unlock-conf='encfs -i=5 ~/Dropbox/Crypt-conf ~/Conf'
+alias lock-git='fusermount -u ~/git'
+alias unlock-git='encfs -i=5 ~/Dropbox/Crypt-git ~/git -o volname="git"'
+alias lock-personal='fusermount -u ~/Documents'
+alias unlock-personal='encfs -i=5 ~/Dropbox/Crypt-personal ~/Documents'
+alias lock-rm='fusermount -u ~/Documents-rm'
+alias unlock-rm='encfs -i=5 ~/Dropbox/Crypt-rm ~/Documents-rm'
+alias lock-wip='fusermount -u ~/Wip'
+alias unlock-wip='encfs -i=5 ~/Dropbox/Crypt-wip ~/Wip'
 
 # Load up ssh keys
 ssh-add -A &> /dev/null
@@ -169,3 +182,6 @@ ssh-add -A &> /dev/null
 #    tmux attach -t hack || tmux new -s hack; exit
 #  fi
 #fi
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
