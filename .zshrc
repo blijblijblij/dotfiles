@@ -66,7 +66,7 @@ ENABLE_CORRECTION="true"
 plugins=(docker git git-flow tmux bundler rake ruby rbenv)
 
 # User configuration
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/rogier/Bin"
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/home/rogier/Bin"
 #export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -172,6 +172,9 @@ alias lock-rm='fusermount -u ~/Documents-rm'
 alias unlock-rm='encfs -i=5 ~/Dropbox/Crypt-rm ~/Documents-rm'
 alias lock-wip='fusermount -u ~/Wip'
 alias unlock-wip='encfs -i=5 ~/Dropbox/Crypt-wip ~/Wip'
+
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
 
 # Load up ssh keys
 ssh-add -A &> /dev/null
