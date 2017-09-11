@@ -1,85 +1,134 @@
-" All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
-" /usr/share/vim/vimcurrent/debian.vim) and sourced by the call to :runtime
-" you can find below.  If you wish to change any of those settings, you should
-" do it in this file (/etc/vim/vimrc), since debian.vim will be overwritten
-" everytime an upgrade of the vim packages is performed.  It is recommended to
-" make changes after sourcing debian.vim since it alters the value of the
-" 'compatible' option.
-
-" This line should not be removed as it ensures that various options are
-" properly set to work with the Vim-related packages available in Debian.
-"runtime! debian.vim
-
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
-"set compatible
-
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
-syntax on 
-
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-colorscheme solarized
-let g:solarized_termtrans = 1
-"colorscheme basic-dark
-"colorscheme railscasts
-"colorscheme vividchalk
-set background=dark
-"colorscheme material-theme
-
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
-"if has("autocmd")
-"  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-"    \| exe "normal g'\"" | endif
-"endif
-
-" Uncomment the following to have Vim load indentation rules according to the
-" detected filetype. Per default Debian Vim only load filetype specific
-" plugins.
-"if has("autocmd")
-"  filetype indent on
-"endif
-
-" The following are commented out as they cause vim to behave a lot
-" differently from regular Vi. They are highly recommended though.
-"set showcmd		" Show (partial) command in status line.
-"set showmatch		" Show matching brackets.
-"set ignorecase		" Do case insensitive matching
-"set smartcase		" Do smart case matching
-"set incsearch		" Incremental search
-"set autowrite		" Automatically save before commands like :next and :make
-"set hidden             " Hide buffers when they are abandoned
-"set mouse=a		" Enable mouse usage (all modes) in terminals
-
-" Source a global configuration file if available
-" XXX Deprecated, please move your changes here in /etc/vim/vimrc
-"if filereadable("/etc/vim/vimrc.local")
-"  source /etc/vim/vimrc.local
-"endif
-
-"set guifont=8x13bold
-
-" You may want to turn off the beep sounds (if you want quite) with visual
-" bell
-"set vb
-
-" show line numbers
-set invnumber
-:nmap <C-N><C-N> :set invnumber <CR>
-
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" indentation
-" load indent file for the current filetype
-filetype indent on
-filetype on           " Enable filetype detection
-filetype indent on    " Enable filetype-specific indenting
-filetype plugin on    " Enable filetype-specific plugins
-set smartindent
-set autoindent
-set expandtab
-set tabstop=2 shiftwidth=2 softtabstop=2
+" source ~/.vimrc.before if it exists.
+if filereadable(expand("~/.vimrc.before"))
+source ~/.vimrc.before
+endif
 
+" ================ General Config ====================
+
+execute pathogen#infect()
+set number relativenumber       "Line numbers are good
+set backspace=indent,eol,start  "Allow backspace in insert mode
+set history=1000                "Store lots of :cmdline history
+set showcmd                     "Show incomplete cmds down the bottom
+set showmode                    "Show current mode down the bottom
+set gcr=a:blinkon0              "Disable cursor blink
+set visualbell                  "No sounds
+set autoread                    "Reload files changed outside vim
+
+" This makes vim act like all other editors, buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
+set hidden
+
+"turn on syntax highlighting
+syntax on
+
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+" The mapleader has to be set before vundle starts loading all
+" the plugins.
+let mapleader=","
+set timeout timeoutlen=1500
+
+" ================ Turn Off Swap Files ==============
+
+set noswapfile
+set nobackup
+set nowb
+
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
+silent !mkdir ~/.vim/backups > /dev/null 2>&1
+set undodir=~/.vim/backups
+set undofile
+endif
+
+" ================ Folds ============================
+
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
+"
+" ================ Scrolling ========================
+
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+
+" ================ Search ===========================
+
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Highlight searches by default
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital
+
+" ================ Indentation ======================
+
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+
+filetype plugin on
+filetype indent on
+
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
+
+set nowrap       "Don't wrap lines
+set linebreak    "Wrap lines at convenient points
+
+" ================ Custom Settings ========================
+
+" Window pane resizing
+nnoremap <silent> <Leader>[ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>] :exe "resize " . (winheight(0) * 2/3)<CR>
+
+" ===== Seeing Is Believing =====
+" " Assumes you have a Ruby with SiB available in the PATH
+" " If it doesn't work, you may need to `gem install seeing_is_believing -v
+" 3.0.0.beta.6`
+" " ...yeah, current release is a beta, which won't auto-install
+"
+" " Annotate every line
+"
+nmap <leader>b :%!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk<CR>;
+"
+"  " Annotate marked lines
+"
+nmap <leader>n :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
+"
+"  " Remove annotations
+"
+nmap <leader>c :%.!seeing_is_believing --clean<CR>;
+"
+"  " Mark the current line for annotation
+"
+nmap <leader>m A # => <Esc>
+"
+"  " Mark the highlighted lines for annotation
+"
+vmap <leader>m :norm A # => <Esc>
+
+" Plugin call to ctrl p for fuzzy file search
+"
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" set solarized colors
+"
+
+colorscheme solarized
+let g:solarized_termtrans = 1
+set background=dark
