@@ -16,7 +16,7 @@ ln -sf "${MY_PATH}/.gitignore_global" ~/.gitignore_global
 ln -sf "${MY_PATH}/.selected_editor" ~/.selected_editor
 ln -sf "${MY_PATH}/.tmux.conf" ~/.tmux.conf
 ln -sf "${MY_PATH}/.vimrc" ~/.vimrc
-ln -sf "${MY_PATH}/solarized.vim" ~/.vim/colors/solarized.vim
+ln -sf "${MY_PATH}/.vim" ~/.vim
 ln -sf "${MY_PATH}/.zshrc" ~/.zshrc
 
 echo "---> done"
