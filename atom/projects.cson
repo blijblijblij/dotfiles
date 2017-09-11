@@ -2,48 +2,44 @@
   {
     title: "dev"
     paths: [
-      "/home/rogier/Dropbox/git/blijblijblij.github.io"
-      "/home/rogier/Dropbox/git/blijblijblij.github.io-hugo"
-      "/home/rogier/Dropbox/git/learning-ruby"
-      "/home/rogier/Dropbox/git/meia-ontwerp-html"
-      "/home/rogier/Dropbox/git/meia-ontwerp-rails"
-      "/home/rogier/Dropbox/git/playground"
-      "/home/rogier/git/dotfiles"
+      "/Users/rogier/Dropbox/git/blijblijblij.github.io"
+      "/Users/rogier/Dropbox/git/blijblijblij.github.io-hugo"
+      "/Users/rogier/Dropbox/git/learning-ruby"
+      "/Users/rogier/Dropbox/git/meia-ontwerp-html"
+      "/Users/rogier/Dropbox/git/meia-ontwerp-rails"
+      "/Users/rogier/Dropbox/git/playground"
+      "/Users/rogier/git/dotfiles"
+      "/Users/rogier/Dropbox/git/blijblijblij.com"
+      "/Users/rogier/Dropbox/git/blijblijblij.com-rails"
     ]
   }
   {
     title: "rm data"
     paths: [
-      "/home/rogier/git/rm-ddl"
-      "/home/rogier/git/rm-etl"
-      "/home/rogier/git/rm-pentaho"
-      "/home/rogier/git/rm-pentaho-openid-adapter"
+      "/Users/rogier/git/rm-etl"
+      "/Users/rogier/git/rm-pentaho"
     ]
   }
   {
     title: "rm rails"
     paths: [
-      "/home/rogier/git/rm-content-admin"
-      "/home/rogier/git/rm-data-admin"
-      "/home/rogier/git/rm-masterdata-engine"
-      "/home/rogier/git/rm-rails"
-      "/home/rogier/git/rm-oidc-engine"
-      "/home/rogier/git/rm-survey-frontend"
-      "/home/rogier/git/rm-survey-backend"
-      "/home/rogier/git/rm-dashboard-assets"
+      "/Users/rogier/git/rm-content-admin"
+      "/Users/rogier/git/rm-data-admin"
+      "/Users/rogier/git/rm-masterdata-engine"
+      "/Users/rogier/git/rm-rails"
+      "/Users/rogier/git/rm-oidc-engine"
+      "/Users/rogier/git/rm-dashboard-assets"
     ]
   }
   {
     title: "rm var"
     paths: [
-      "/home/rogier/git/rm-data-dev"
-      "/home/rogier/git/rm-docker"
-      "/home/rogier/git/rm-documentation"
-      "/home/rogier/git/rm-documentation.wiki"
-      "/home/rogier/git/rm-mesos"
-      "/home/rogier/git/rm-scripts"
-      "/home/rogier/git/rm-secrets"
-      "/home/rogier/git/rm-system"
+      "/Users/rogier/git/rm-data-dev"
+      "/Users/rogier/git/rm-docker"
+      "/Users/rogier/git/rm-mesos"
+      "/Users/rogier/git/rm-scripts"
+      "/Users/rogier/git/rm-secrets"
+      "/Users/rogier/git/rm-system"
     ]
   }
 ]
