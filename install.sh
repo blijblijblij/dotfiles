@@ -7,8 +7,6 @@ fi
 echo "apply dotfiles" | figlet | lolcat
 echo "--->  clean " | lolcat
 rm -rf ~/.vim/
-mkdir ~/.vim/
-mkdir ~/.vim/colors/
 
 echo "---> re-apply the symlinks" | lolcat
 ln -sf "${MY_PATH}/.gitconfig" ~/.gitconfig
