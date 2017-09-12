@@ -6,7 +6,10 @@ fi
 
 echo "apply dotfiles" | figlet | lolcat
 echo "--->  clean " | lolcat
-rm -rf ~/.vim/
+
+if [ -d "$HOME/.vim/" ]; then
+    rm -d ~/.vim/
+fi
 
 echo "---> re-apply the symlinks" | lolcat
 ln -sf "${MY_PATH}/.gitconfig" ~/.gitconfig
@@ -14,7 +17,7 @@ ln -sf "${MY_PATH}/.gitignore_global" ~/.gitignore_global
 ln -sf "${MY_PATH}/.selected_editor" ~/.selected_editor
 ln -sf "${MY_PATH}/.tmux.conf" ~/.tmux.conf
 ln -sf "${MY_PATH}/.vimrc" ~/.vimrc
-ln -sf "${MY_PATH}/.vim" ~/.vim
+ln -s "${MY_PATH}/.vim/" ~/.vim/
 ln -sf "${MY_PATH}/.zshrc" ~/.zshrc
 
 echo "---> done"
