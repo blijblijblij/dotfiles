@@ -2,27 +2,27 @@
   {
     title: "data"
     paths: [
-      "/home/rogier/git/rm-etl"
-      "/home/rogier/git/rm-pentaho"
+      "/Users/rogier/git/rm-etl"
+      "/Users/rogier/git/rm-pentaho"
     ]
   }
   {
     title: "ror"
     paths: [
-      "/home/rogier/git/rm-data-admin"
-      "/home/rogier/git/rm-masterdata-engine"
-      "/home/rogier/git/rm-rails"
-      "/home/rogier/git/rm-oidc-engine"
+      "/Users/rogier/git/rm-data-admin"
+      "/Users/rogier/git/rm-masterdata-engine"
+      "/Users/rogier/git/rm-rails"
+      "/Users/rogier/git/rm-oidc-engine"
     ]
   }
   {
     title: "var"
     paths: [
-      "/home/rogier/git/rm-docker"
-      "/home/rogier/git/rm-mesos"
-      "/home/rogier/git/rm-scripts"
-      "/home/rogier/git/rm-secrets"
-      "/home/rogier/git/rm-system"
+      "/Users/rogier/git/rm-docker"
+      "/Users/rogier/git/rm-mesos"
+      "/Users/rogier/git/rm-scripts"
+      "/Users/rogier/git/rm-secrets"
+      "/Users/rogier/git/rm-system"
     ]
   }
 ]
