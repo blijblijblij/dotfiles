@@ -9,6 +9,7 @@ apm install linter-rubocop
 apm install rubocop-auto-correct
 apm install language-haml
 apm install html2haml
+apm install rspec
 
 # nicer code
 apm install atom-beautify
