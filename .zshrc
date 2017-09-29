@@ -110,8 +110,8 @@ alias aramaki='ssh -XC aramaki'
 alias x2x='ssh -XC ishikawa x2x -east -to :0'
 
 # tmux
-alias tm='tmux attach -t hack || tmux new -s hack; exit'
-alias tmd='tmux detach'
+alias tm='tmux attach -t sys || tmux new -s sys; exit'
+alias tmh='tmux attach -t hack || tmux new -s hack; exit'
 
 # some ugly fixes
 alias apt='sudo apt-get update && sudo apt-get -y upgrade && \
