@@ -135,8 +135,6 @@ nmap <leader>m A # => <Esc>
 vmap <leader>m :norm A # => <Esc>
 
 
-" ================ My Personal Settings ========================
-
 " Enable nerd tree
 
 map <C-n> :NERDTreeToggle<CR>
@@ -151,3 +149,9 @@ let NERDTreeShowHidden=1
 colorscheme solarized
 let g:solarized_termtrans = 1
 set background=dark
+
+" autoformating
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+noremap <F3> :Autoformat<CR>
