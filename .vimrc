@@ -7,9 +7,23 @@ if filereadable(expand("~/.vimrc.before"))
 source ~/.vimrc.before
 endif
 
+" ================ Plugin manager ====================
+
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Chiel92/vim-autoformat'
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 " ================ General Config ====================
 
-execute pathogen#infect()
 set number relativenumber       "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
@@ -120,8 +134,6 @@ nmap <leader>m A # => <Esc>
 "
 vmap <leader>m :norm A # => <Esc>
 
-" Plugin call to ctrl p for fuzzy file search
-"
 
 " ================ My Personal Settings ========================
 
