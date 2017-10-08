@@ -175,7 +175,7 @@ alias unlock-wip='encfs -i=5 ~/Dropbox/Crypt-wip ~/Wip'
 
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
-
+alias lsrails="lsof -wni tcp:3000"
 # Load up ssh keys
 ssh-add -A &> /dev/null
 

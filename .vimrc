@@ -19,6 +19,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'thoughtbot/vim-rspec'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -155,3 +157,32 @@ let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 noremap <F3> :Autoformat<CR>
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+"
+" " Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+"
+" " Align line-wise comment delimiters flush left instead of following code
+" indentation
+let g:NERDDefaultAlign = 'left'
+"
+" " Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+"
+" " Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+"
+" " Allow commenting and inverting empty lines (useful when commenting a
+" region)
+let g:NERDCommentEmptyLines = 1
+"
+" " Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
