@@ -1,6 +1,7 @@
 [user]
 	name = Rogier Wessel
 	email = rhwessel@xs4all.nl
+	signingkey = 8A4EE28EDDE19F01
 [core]
 	autocrlf = input
 	safecrlf = warn
@@ -24,3 +25,5 @@
   	dump = cat-file -p
 [push]
 	default = simple
+[commit]
+	gpgsign = true
