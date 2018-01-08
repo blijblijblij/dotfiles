@@ -191,3 +191,7 @@ eval "$(rbenv init -)"
 export PATH="/usr/local/opt/v8@3.15/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+# Usage: compresspdf [input file] [output file] [screen*|ebook|printer|prepress]
+compresspdf() {
+    gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dPDFSETTINGS=/${3:-"screen"} -dCompatibilityLevel=1.4 -sOutputFile="$2" "$1"
+}
