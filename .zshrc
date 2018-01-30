@@ -197,3 +197,6 @@ export GPG_TTY=$(tty)
 compresspdf() {
     gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dPDFSETTINGS=/${3:-"screen"} -dCompatibilityLevel=1.4 -sOutputFile="$2" "$1"
 }
+
+# added by travis gem
+[ -f /Users/rogier/.travis/travis.sh ] && source /Users/rogier/.travis/travis.sh
