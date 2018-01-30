@@ -21,6 +21,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'airblade/vim-gitgutter'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
