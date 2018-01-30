@@ -10,6 +10,7 @@ apm install rubocop-auto-correct
 apm install language-haml
 apm install html2haml
 apm install rspec
+apm install seeing-is-believing
 
 # nicer code
 apm install atom-beautify
