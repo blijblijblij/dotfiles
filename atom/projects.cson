@@ -1,18 +1,40 @@
 [
   {
-    title: "data"
+    title: "rm-rails"
     paths: [
-      "/Users/rogier/git/rm-etl"
-      "/Users/rogier/git/rm-pentaho"
+      "/Users/rogier/git/rm-rails"
+      "/Users/rogier/git/rm-oidc-engine"
     ]
   }
   {
-    title: "ror"
+    title: "rm-public-pages"
+    paths: [
+      "/Users/rogier/git/rm-api"
+      "/Users/rogier/git/rm-public-pages"
+    ]
+  }
+  {
+    title: "rm-data-admin"
     paths: [
       "/Users/rogier/git/rm-data-admin"
       "/Users/rogier/git/rm-masterdata-engine"
-      "/Users/rogier/git/rm-rails"
+    ]
+  }
+  {
+    title: "js & styles"
+    paths: [
+      "/Users/rogier/git/rm-dashboard-assets"
+      "/Users/rogier/git/rm-public-pages"
       "/Users/rogier/git/rm-oidc-engine"
+      "/Users/rogier/git/rm-data-admin"
+      "/Users/rogier/git/rm-masterdata-engine"
+    ]
+  }
+  {
+    title: "rm-pentaho"
+    paths: [
+      "/Users/rogier/git/rm-etl"
+      "/Users/rogier/git/rm-pentaho"
     ]
   }
   {
