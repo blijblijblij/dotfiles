@@ -8,6 +8,7 @@ source ~/.vimrc.before
 endif
 
 " ================ Plugin manager ====================
+execute pathogen#infect()
 
 filetype off                  " required
 
@@ -187,5 +188,3 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
