@@ -150,8 +150,9 @@ let NERDTreeShowHidden=1
 " set solarized colors
 "
 
-colorscheme solarized
+"colorscheme solarized
 let g:solarized_termtrans = 1
+colorscheme vividchalk
 set background=dark
 
 " autoformating
