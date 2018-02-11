@@ -147,13 +147,22 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 let g:NERDTreeWinSize = 60
 let NERDTreeShowHidden=1
 
-" set solarized colors
-"
+" set colors
+
+set background=dark
+set t_Co=256   " This is may or may not needed.
 
 "colorscheme solarized
 let g:solarized_termtrans = 1
-colorscheme vividchalk
-set background=dark
+"colorscheme vividchalk
+" colorscheme PaperColor
+" colorscheme angr
+
+colorscheme space-vim-dark
+hi! Normal ctermbg=NONE guibg=NONE
+set notermguicolors
+set termguicolors
+" hi Comment cterm=italic
 
 " autoformating
 let g:autoformat_autoindent = 0
