@@ -153,7 +153,7 @@ set background=dark
 set t_Co=256   " This is may or may not needed.
 
 "colorscheme solarized
-let g:solarized_termtrans = 1
+" let g:solarized_termtrans = 1
 "colorscheme vividchalk
 " colorscheme PaperColor
 " colorscheme angr

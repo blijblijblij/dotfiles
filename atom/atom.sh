@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo "setting up atom"
 echo "---> addons"
 apm install linter
