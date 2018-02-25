@@ -112,8 +112,16 @@ alias aramaki='ssh -XC aramaki'
 alias x2x='ssh -XC ishikawa x2x -east -to :0'
 
 # tmux
-#alias tm='tmux attach -t sys || tmux new -s sys; exit'
-#alias tmh='tmux attach -t hack || tmux new -s hack; exit'
+alias tm='tmux attach -t hack || tmux new -s hack; exit'
+alias rm-api='tmux attach -t rm-api || cd ~/git/rm-api && tmux new -s rm-api; exit'
+alias rm-public-pages='tmux attach -t rm-public-pages || cd ~/git/rm-public-pages && tmux new -s rm-public-pages; exit'
+alias rm-rails='tmux attach -t rm-rails || cd ~/git/rm-rails && tmux new -s rm-rails; exit'
+alias rm-docker='tmux attach -t rm-docker || cd ~/git/rm-docker && tmux new -s rm-docker; exit'
+alias rm-mesos='tmux attach -t rm-mesos || cd ~/git/rm-mesos && tmux new -s rm-mesos; exit'
+alias rm-data-admin='tmux attach -t rm-data-admin || cd ~/git/rm-data-admin && tmux new -s rm-data-admin; exit'
+alias rm-oidc-engine='tmux attach -t rm-oidc-engine || cd ~/git/rm-oidc-engine && tmux new -s rm-oidc-engine; exit'
+alias rm-masterdata-engine='tmux attach -t rm-masterdata-engine || cd ~/git/rm-masterdata-engine && tmux new -s rm-masterdata-engine; exit'
+alias rm-scripts='tmux attach -t rm-scripts || cd ~/git/rm-scripts && tmux new -s rm-scripts; exit'
 
 # some ugly fixes
 alias apt='sudo apt-get update && sudo apt-get -y upgrade && \
