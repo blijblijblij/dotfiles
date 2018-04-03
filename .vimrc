@@ -8,24 +8,41 @@ source ~/.vimrc.before
 endif
 
 " ================ Plugin manager ====================
-execute pathogen#infect()
-
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'airblade/vim-gitgutter'
-call vundle#end()            " required
-filetype plugin indent on    " required
-
+" Plug config
+call plug#begin('~/.vim/plugged')
+  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'vim-scripts/bufexplorer.zip'
+  Plug 'mileszs/ack.vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'scrooloose/nerdtree'
+  Plug 'Chiel92/vim-autoformat'
+  Plug 'scrooloose/nerdcommenter'
+  Plug 'thoughtbot/vim-rspec'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'ervandew/supertab'
+  Plug 'tpope/vim-bundler'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-dispatch'
+  Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-rake'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-surround'
+  " Ruby and Rails plugins
+  Plug 'slim-template/vim-slim'
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'janko-m/vim-test'
+  " Javascript plugins
+  Plug 'pangloss/vim-javascript'
+  Plug 'mxw/vim-jsx'
+  " var
+  Plug 'benmills/vimux'
+  Plug 'w0rp/ale'
+  Plug 'majutsushi/tagbar'
+call plug#end()
 " ================ General Config ====================
 
 set number relativenumber       "Line numbers are good
@@ -145,15 +162,56 @@ map <C-n> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 let g:NERDTreeWinSize = 60
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+let g:spec_runner_dispatcher = "VtrSendCommand! {command}"
+
+" RSpec.vim mappings
+noremap <Leader>t :call RunCurrentSpecFile()<CR>
+noremap <Leader>s :call RunNearestSpec()<CR>
+noremap <Leader>l :call RunLastSpec()<CR>
+noremap <Leader>a :call RunAllSpecs()<CR>
+
+nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'irb'}<cr>
+
+" For ruby block selections
+runtime macros/matchit.vim
+
+" For Running plain Ruby test scripts
+nnoremap <leader>r :RunSpec<CR>
+nnoremap <leader>l :RunSpecLine<CR>
+nnoremap <leader>e :RunSpecLastRun<CR>
+nnoremap <leader>cr :RunSpecCloseResult<CR>
+
+" Move line down and up
+noremap <Leader>- :m .+1<CR>
+noremap <Leader>= :m .-2<CR>
+
+" Uppercase converter for insert and normal mode
+vnoremap <c-u> U
+
+" Open up vimrc in new pane
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" Source new changes
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Show hidden files in NERDtree
 let NERDTreeShowHidden=1
 
 " set colors
 
 set background=dark
-set t_Co=256   " This is may or may not needed.
+" set t_Co=256   " This is may or may not needed.
 
 "colorscheme solarized
 " let g:solarized_termtrans = 1
+" let g:airline_solarized_bg='dark'
 "colorscheme vividchalk
 " colorscheme PaperColor
 " colorscheme angr
@@ -163,6 +221,9 @@ hi! Normal ctermbg=NONE guibg=NONE
 set notermguicolors
 set termguicolors
 " hi Comment cterm=italic
+
+" set the airline theme
+let g:airline_theme='minimalist'
 
 " autoformating
 let g:autoformat_autoindent = 0
@@ -193,8 +254,18 @@ let g:NERDCommentEmptyLines = 1
 " " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+" ignore
+set wildignore+=*/node_modules/*,*/tmp/*
+
+" Test config
+nnoremap  t :TestFile
+nnoremap  s :TestNearest
+nnoremap  l :TestLast
+nnoremap  a :TestSuite
+nnoremap  gt :TestVisit
+
+let test#strategy = "vimux"
+
+nmap <F8> :TagbarToggle<CR>
+
+hi Normal guibg=NONE ctermbg=NONE

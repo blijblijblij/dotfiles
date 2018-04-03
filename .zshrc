@@ -186,6 +186,10 @@ alias unlock-wip='encfs -i=5 ~/Dropbox/Crypt-wip ~/Wip'
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias lsrails="lsof -wni tcp:3000"
+
+# if type nvim > /dev/null 2>&1; then
+#   alias vim='nvim'
+# fi
 # Load up ssh keys
 ssh-add -A &> /dev/null
 
@@ -210,3 +214,13 @@ compresspdf() {
 
 # added by travis gem
 [ -f /Users/rogier/.travis/travis.sh ] && source /Users/rogier/.travis/travis.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# adb 
+if [ -d "$HOME/Applications/platform-tools" ] ; then
+     export PATH="$HOME/Applications/platform-tools:$PATH"
+fi
+
+# disable command corrections
+unsetopt correct_all

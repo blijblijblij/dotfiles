@@ -1,7 +1,7 @@
 [user]
 	name = Rogier Wessel
-	email = rhwessel@xs4all.nl
-	signingkey = 8A4EE28EDDE19F01
+	email = rogier@blijblijblij.com
+	signingkey = C2EDC5D56C66F3C868BF2524DE14FA776A474701
 [core]
 	autocrlf = input
 	safecrlf = warn
