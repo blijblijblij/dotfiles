@@ -31,6 +31,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-rbenv'
+  Plug 'tpope/vim-haml'
+  Plug 'tpope/vim-dotenv'
+  Plug 'ngmy/vim-rubocop'
+  Plug 'tpope/vim-git'
   " Ruby and Rails plugins
   Plug 'slim-template/vim-slim'
   Plug 'vim-ruby/vim-ruby'
@@ -163,6 +168,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 let g:NERDTreeWinSize = 60
 let g:tmux_navigator_no_mappings = 1
+set modifiable
 
 nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
 nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>

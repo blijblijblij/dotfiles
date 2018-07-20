@@ -11,6 +11,31 @@ export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export LANGUAGE=en_US.utf8
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
 # zsh
 export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -65,7 +90,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker git git-flow tmux bundler rake ruby rbenv)
+plugins=(kubectl docker git git-flow tmux bundler rake ruby rbenv)
 
 # User configuration
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/home/rogier/Bin"
@@ -116,12 +141,15 @@ alias tm='tmux attach -t hack || tmux new -s hack; exit'
 alias rm-api='tmux attach -t rm-api || cd ~/git/rm-api && tmux new -s rm-api; exit'
 alias rm-public-pages='tmux attach -t rm-public-pages || cd ~/git/rm-public-pages && tmux new -s rm-public-pages; exit'
 alias rm-rails='tmux attach -t rm-rails || cd ~/git/rm-rails && tmux new -s rm-rails; exit'
+alias rm-dashboard-assets='tmux attach -t rm-dashboard-assets || cd ~/git/rm-dashboard-assets && tmux new -s rm-dashboard-assets; exit'
 alias rm-docker='tmux attach -t rm-docker || cd ~/git/rm-docker && tmux new -s rm-docker; exit'
 alias rm-mesos='tmux attach -t rm-mesos || cd ~/git/rm-mesos && tmux new -s rm-mesos; exit'
 alias rm-data-admin='tmux attach -t rm-data-admin || cd ~/git/rm-data-admin && tmux new -s rm-data-admin; exit'
 alias rm-oidc-engine='tmux attach -t rm-oidc-engine || cd ~/git/rm-oidc-engine && tmux new -s rm-oidc-engine; exit'
 alias rm-masterdata-engine='tmux attach -t rm-masterdata-engine || cd ~/git/rm-masterdata-engine && tmux new -s rm-masterdata-engine; exit'
 alias rm-scripts='tmux attach -t rm-scripts || cd ~/git/rm-scripts && tmux new -s rm-scripts; exit'
+alias rm-system='tmux attach -t rm-system || cd ~/git/rm-system && tmux new -s rm-system; exit'
+alias rm-documentation='tmux attach -t rm-documentation || cd ~/git/rm-documentation && tmux new -s rm-documentation; exit'
 
 # some ugly fixes
 alias apt='sudo apt-get update && sudo apt-get -y upgrade && \
@@ -161,7 +189,7 @@ alias dcu='dc kill && dc rm -f && dc build && dc up -d && dc logs -f'
 
 #alias pdi='clear export KETTLE_HOME=$HOME/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
 # alias pdi='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
-alias pdi='clear && cd $HOME/App/pdi-ee-client-7.1.0.0-12/data-integration && sh spoon.sh'
+alias pdi='clear && export KETTLE_HOME=$HOME/Conf/work/rm/kettle && cd $HOME/Applications/pdi80/data-integration && sh spoon.sh'
 
 alias update-prod='dsh -c -g prod -M -w "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get clean"'
 alias update-nonprod='dsh -c -g nonprod -M -w "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get clean"'
@@ -187,6 +215,10 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias lsrails="lsof -wni tcp:3000"
 
+alias tf="terraform"
+
+# minikube aliases
+alias mk="minikube"
 # if type nvim > /dev/null 2>&1; then
 #   alias vim='nvim'
 # fi
@@ -224,3 +256,7 @@ fi
 
 # disable command corrections
 unsetopt correct_all
+export PATH=$HOME/Bin:$PATH
+
+export PATH=~/.local/bin:$PATH
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
