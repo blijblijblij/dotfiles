@@ -281,3 +281,6 @@ let test#strategy = "vimux"
 nmap <F8> :TagbarToggle<CR>
 
 hi Normal guibg=NONE ctermbg=NONE
+
+" include pry
+nmap <leader>d :call pry#insert()<cr>
