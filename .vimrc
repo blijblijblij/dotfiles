@@ -286,3 +286,6 @@ hi Normal guibg=NONE ctermbg=NONE
 
 " include pry
 nmap <leader>d :call pry#insert()<cr>
+
+" include puts
+nnoremap <Leader>pt oputs "#" * 60<C-M>puts "<C-R>=expand("%") . ':' . line(".")<CR>"<C-M>puts "*" * 60<esc>
