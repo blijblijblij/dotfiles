@@ -235,7 +235,7 @@ set termguicolors
 " hi Comment cterm=italic
 
 " set the airline theme
-let g:airline_theme='minimalist'
+let g:airline_theme='violet'
 
 " autoformating
 let g:autoformat_autoindent = 0
