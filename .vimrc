@@ -49,6 +49,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'benmills/vimux'
   Plug 'w0rp/ale'
   Plug 'majutsushi/tagbar'
+  Plug 'BlakeWilliams/vim-pry'
 call plug#end()
 " ================ General Config ====================
 
