@@ -1,0 +1,11 @@
+# /Users/rogier/.config/tmuxinator/rm-public-pages.yml
+
+name: rm-public-pages
+root: ~/git/rm-public-pages
+
+on_project_start: ctags -R --languages=html,javascript --exclude=.git
+on_project_start: cd client && npm install
+
+windows:
+  - editor: vim .
+  - server: cd client && npm start

@@ -1,0 +1,14 @@
+# /Users/rogier/.config/tmuxinator/cfa.yml
+
+name: rm-cfa
+root: ~/git/rm-rails
+
+on_project_start: ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
+
+windows:
+  - editor: vim .
+  - server:
+      layout: main-horizontal
+      panes:
+        - rails s -b 0.0.0.0 -p 3000
+        - guard
