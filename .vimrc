@@ -50,6 +50,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'w0rp/ale'
   Plug 'majutsushi/tagbar'
   Plug 'BlakeWilliams/vim-pry'
+  " fzf, find pattern within source code
+  Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf.vim'
 call plug#end()
 " ================ General Config ====================
 
