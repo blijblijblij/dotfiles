@@ -4,6 +4,9 @@
     paths: [
       "/Users/rogier/git/rm-rails"
       "/Users/rogier/git/rm-oidc-engine"
+      "/Users/rogier/git/rm-masterdata-engine"
+      "/Users/rogier/git/rm-data-admin"
+      "/Users/rogier/git/rm-api"
     ]
   }
   {
@@ -17,7 +20,6 @@
     title: "rm-data-admin"
     paths: [
       "/Users/rogier/git/rm-data-admin"
-      "/Users/rogier/git/rm-masterdata-engine"
     ]
   }
   {
