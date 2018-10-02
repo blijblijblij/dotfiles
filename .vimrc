@@ -276,7 +276,7 @@ nnoremap  t :TestFile
 nnoremap  s :TestNearest
 nnoremap  l :TestLast
 nnoremap  a :TestSuite
-nnoremap  gt :TestVisit
+" nnoremap  gt :TestVisit
 
 let test#strategy = "vimux"
 
