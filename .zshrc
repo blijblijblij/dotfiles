@@ -116,18 +116,19 @@ alias x2x='ssh -XC ishikawa x2x -east -to :0'
 
 # tmux
 alias tm='tmux attach -t hack || tmux new -s hack; exit'
-alias rm-api='tmux attach -t rm-api || cd ~/git/rm-api && tmux new -s rm-api; exit'
-alias rm-public-pages='tmux attach -t rm-public-pages || cd ~/git/rm-public-pages && tmux new -s rm-public-pages; exit'
-alias rm-rails='tmux attach -t rm-rails || cd ~/git/rm-rails && tmux new -s rm-rails; exit'
+alias rm-api='tmuxinator start rm-api'
+alias rm-public-pages='tmuxinator start public'
+alias rm-rails='tmuxinator start cfa'
 alias rm-dashboard-assets='tmux attach -t rm-dashboard-assets || cd ~/git/rm-dashboard-assets && tmux new -s rm-dashboard-assets; exit'
 alias rm-docker='tmux attach -t rm-docker || cd ~/git/rm-docker && tmux new -s rm-docker; exit'
 alias rm-mesos='tmux attach -t rm-mesos || cd ~/git/rm-mesos && tmux new -s rm-mesos; exit'
-alias rm-data-admin='tmux attach -t rm-data-admin || cd ~/git/rm-data-admin && tmux new -s rm-data-admin; exit'
+alias rm-data-admin='tmuxinator start da'
 alias rm-oidc-engine='tmux attach -t rm-oidc-engine || cd ~/git/rm-oidc-engine && tmux new -s rm-oidc-engine; exit'
 alias rm-masterdata-engine='tmux attach -t rm-masterdata-engine || cd ~/git/rm-masterdata-engine && tmux new -s rm-masterdata-engine; exit'
 alias rm-scripts='tmux attach -t rm-scripts || cd ~/git/rm-scripts && tmux new -s rm-scripts; exit'
 alias rm-system='tmux attach -t rm-system || cd ~/git/rm-system && tmux new -s rm-system; exit'
 alias rm-documentation='tmux attach -t rm-documentation || cd ~/git/rm-documentation && tmux new -s rm-documentation; exit'
+alias meia-ontwerp='tmux attach -t meia-ontwerp || cd ~/git/meia-ontwerp.nl && tmux new -s meia-ontwerp; exit'
 
 # some ugly fixes
 alias apt='sudo apt-get update && sudo apt-get -y upgrade && \
