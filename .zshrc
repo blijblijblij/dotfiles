@@ -200,6 +200,10 @@ alias mk="minikube"
 # if type nvim > /dev/null 2>&1; then
 #   alias vim='nvim'
 # fi
+
+alias ctags="`brew --prefix`/bin/ctags"
+alias ctags-here="ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)"
+
 # Load up ssh keys
 ssh-add -A &> /dev/null
 
