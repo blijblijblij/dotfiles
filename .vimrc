@@ -36,6 +36,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-dotenv'
   Plug 'ngmy/vim-rubocop'
   Plug 'tpope/vim-git'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb'
   " Ruby and Rails plugins
   Plug 'slim-template/vim-slim'
   Plug 'vim-ruby/vim-ruby'
