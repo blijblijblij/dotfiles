@@ -83,16 +83,11 @@ else
   export EDITOR='vim'
 fi
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# suffix aliases
-alias -s log="less -MN"
-
 # some generics
 alias ls='ls -ls'
 alias ll='ls -lA'
 alias df='df -h'
+
 # Some more alias to avoid making mistakes:
 alias rm='rm -i'
 alias cp='cp -i'
@@ -115,20 +110,20 @@ alias aramaki='ssh -XC aramaki'
 alias x2x='ssh -XC ishikawa x2x -east -to :0'
 
 # tmux
-alias tm='tmux attach -t hack || tmux new -s hack; exit'
+alias tm='tmuxinator'
 alias rm-api='tmuxinator start rm-api'
-alias rm-public-pages='tmuxinator start public'
-alias rm-rails='tmuxinator start cfa'
-alias rm-dashboard-assets='tmux attach -t rm-dashboard-assets || cd ~/git/rm-dashboard-assets && tmux new -s rm-dashboard-assets; exit'
-alias rm-docker='tmux attach -t rm-docker || cd ~/git/rm-docker && tmux new -s rm-docker; exit'
-alias rm-mesos='tmux attach -t rm-mesos || cd ~/git/rm-mesos && tmux new -s rm-mesos; exit'
-alias rm-data-admin='tmuxinator start da'
-alias rm-oidc-engine='tmux attach -t rm-oidc-engine || cd ~/git/rm-oidc-engine && tmux new -s rm-oidc-engine; exit'
-alias rm-masterdata-engine='tmux attach -t rm-masterdata-engine || cd ~/git/rm-masterdata-engine && tmux new -s rm-masterdata-engine; exit'
-alias rm-scripts='tmux attach -t rm-scripts || cd ~/git/rm-scripts && tmux new -s rm-scripts; exit'
-alias rm-system='tmux attach -t rm-system || cd ~/git/rm-system && tmux new -s rm-system; exit'
-alias rm-documentation='tmux attach -t rm-documentation || cd ~/git/rm-documentation && tmux new -s rm-documentation; exit'
-alias meia-ontwerp='tmux attach -t meia-ontwerp || cd ~/git/meia-ontwerp.nl && tmux new -s meia-ontwerp; exit'
+alias rm-public-pages='tmuxinator start rm-public-pages'
+alias rm-rails='tmuxinator start rm-rails'
+alias rm-dashboard-assets='tmuxinator start rm-dashboard-assets'
+alias rm-docker='tmuxinator start rm-docker'
+alias rm-mesos='tmuxinator start rm-mesos'
+alias rm-data-admin='tmuxinator start rm-data-admin'
+alias rm-oidc-engine='tmux start rm-oidc-engine'
+alias rm-masterdata-engine='tmux start rm-masterdata-engine'
+alias rm-scripts='tmuxinator rm-scripts'
+alias rm-system='tmuxinator start rm-system'
+alias meia-ontwerp.nl='tmuxinator start meia-ontwerp.nl'
+alias funtime4kids.nl='tmuxinator start funtime4kids.nl'
 
 # some ugly fixes
 alias apt='sudo apt-get update && sudo apt-get -y upgrade && \
@@ -150,7 +145,6 @@ alias serv='python -m SimpleHTTPServer 8088'
 alias dk='docker'
 alias dm='docker-machine'
 alias dc='docker-compose'
-alias dcs='dc kill && dc rm -f && dc up -d && dc logs'
 # Kill all running containers.
 alias dk-kill='docker kill $(docker ps -a -q)'
 # Remove all images
@@ -164,10 +158,6 @@ alias dk-clean-volumes='printf "\n>>> Deleting stopped volumes \n\n" && docker v
 # Delete all stopped containers and untagged images.
 alias dk-clean='dk-clean-containers || true && dk-clean-images || true && dk-clean-volumes'
 
-alias dcu='dc kill && dc rm -f && dc build && dc up -d && dc logs -f'
-
-#alias pdi='clear export KETTLE_HOME=$HOME/Conf/work/rm/kettle && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
-# alias pdi='clear && export PENTAHO_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home && cd $HOME/Applications/pdi-ce-6.0.1.0-386 && sh spoon.sh'
 alias pdi='clear && export KETTLE_HOME=$HOME/Conf/work/rm/kettle && cd $HOME/Applications/pdi80/data-integration && sh spoon.sh'
 
 alias update-prod='dsh -c -g prod -M -w "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get clean"'
@@ -196,24 +186,11 @@ alias lsrails="lsof -wni tcp:3000"
 
 alias tf="terraform"
 
-# minikube aliases
-alias mk="minikube"
-# if type nvim > /dev/null 2>&1; then
-#   alias vim='nvim'
-# fi
-
 alias ctags="`brew --prefix`/bin/ctags"
 alias ctags-here="ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)"
 
 # Load up ssh keys
 ssh-add -A &> /dev/null
-
-# Always work in a tmux session if tmux is installed
-#if which tmux 2>&1 >/dev/null; then
-#  if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
-#    tmux attach -t hack || tmux new -s hack; exit
-#  fi
-#fi
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
@@ -222,20 +199,7 @@ export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export GPG_TTY=$(tty)
 
-# Usage: compresspdf [input file] [output file] [screen*|ebook|printer|prepress]
-compresspdf() {
-    gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dPDFSETTINGS=/${3:-"screen"} -dCompatibilityLevel=1.4 -sOutputFile="$2" "$1"
-}
-
-# added by travis gem
-[ -f /Users/rogier/.travis/travis.sh ] && source /Users/rogier/.travis/travis.sh
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# adb 
-if [ -d "$HOME/Applications/platform-tools" ] ; then
-     export PATH="$HOME/Applications/platform-tools:$PATH"
-fi
 
 # disable command corrections
 unsetopt correct_all
