@@ -8,7 +8,10 @@ echo "apply dotfiles" | figlet | lolcat
 echo "---> clean " | lolcat
 
 if [ -d "$HOME/.vim/" ]; then
-    rm -d ~/.vim/
+  echo "---> rm vim folder" | lolcat
+  rm -rf ~/.vim/
+fi
+
 if [ -d "$HOME/.config/tmuxinator/" ]; then
   echo "---> rm tmuxinator config folder" | lolcat
   rm -rf $HOME/.config/tmuxinator/*
@@ -20,8 +23,8 @@ ln -sf "${MY_PATH}/.gitignore_global" ~/.gitignore_global
 ln -sf "${MY_PATH}/.selected_editor" ~/.selected_editor
 ln -sf "${MY_PATH}/.tmux.conf" ~/.tmux.conf
 ln -sf "${MY_PATH}/.vimrc" ~/.vimrc
-ln -s "${MY_PATH}/.vim/" ~/.vim/
+ln -sf "${MY_PATH}/.vim/" ~/.vim/
 ln -sf "${MY_PATH}/.zshrc" ~/.zshrc
-cp -R ${MY_PATH}/tmuxinator/* $HOME/.config/tmuxinator/
+ln -sf "${MY_PATH}/tmuxinator/" ~/.config/
 
 echo "---> done" | lolcat
