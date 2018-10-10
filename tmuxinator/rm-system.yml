@@ -1,0 +1,7 @@
+# /Users/rogier/.config/tmuxinator/rm-system.yml
+
+name: rm-system
+root: ~/git/rm-system
+
+windows:
+  - editor: vim .

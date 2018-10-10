@@ -1,6 +1,6 @@
 # /Users/rogier/.config/tmuxinator/cfa.yml
 
-name: rm-cfa
+name: rm-rails
 root: ~/git/rm-rails
 
 on_project_start: ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)

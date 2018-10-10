@@ -119,6 +119,7 @@ alias rm-dashboard-assets='tmuxinator start rm-dashboard-assets'
 alias rm-docker='tmuxinator start rm-docker'
 alias rm-mesos='tmuxinator start rm-mesos'
 alias rm-data-admin='tmuxinator start rm-data-admin'
+alias rm-data-quality='tmuxinator start rm-data-quality'
 alias rm-oidc-engine='tmux start rm-oidc-engine'
 alias rm-masterdata-engine='tmux start rm-masterdata-engine'
 alias rm-scripts='tmuxinator rm-scripts'
@@ -163,6 +164,9 @@ alias pdi='clear && export KETTLE_HOME=$HOME/Conf/work/rm/kettle && cd $HOME/App
 
 alias update-prod='dsh -c -g prod -M -w "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get clean"'
 alias update-nonprod='dsh -c -g nonprod -M -w "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get clean"'
+alias rmk8='export AWS_PROFILE=reelmetrics;export KUBECONFIG=/Users/rogier/.kube/reelmetrics/config-reelmetrics;echo Working with         - "eks-reelmetrics"'
+alias rmk8-prod='kubectl config use-context rmprod'
+alias rmk8-ingress='kubectl config use-context rmingress'
 
 # open crypted docs
 alias unlock='unlock-bin && unlock-conf && unlock-wip && unlock-personal && unlock-rm'
