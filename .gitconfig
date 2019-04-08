@@ -8,7 +8,7 @@
 	excludesfile = ~/.gitignore_global
 [gitflow "branch"]
     master = master
-    evelop = develop
+    develop = develop
 [gitflow "prefix"]
     feature = feature/
     release = release/
@@ -26,4 +26,7 @@
 [push]
 	default = simple
 [commit]
-	gpgsign = true
+  gpgsign = true
+  ; template = ~/.git-commit-message
+[url "git@github.com:"]
+    insteadOf = "https://github.com/"
