@@ -11,6 +11,17 @@ export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export LANGUAGE=en_US.utf8
 
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/opt/go/libexec
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOROOT/bin
+
+export PYPATH=/usr/local/Cellar/python/3.7.3
+export PYBIN=/usr/local/Cellar/python/3.7.3/bin
+
+export PATH=$PYBIN:$PATH
+
 # tmuxinator
 source ~/.bin/tmuxinator.zsh
 
@@ -22,9 +33,7 @@ source $ZSH/oh-my-zsh.sh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="agnoster"
-#ZSH_THEME="juanghurtado"
-ZSH_THEME="wedisagree"
+ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -68,7 +77,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(kubectl docker git git-flow tmux bundler rake ruby rbenv)
+plugins=(tmuxinator kubectl docker git git-flow tmux bundler rake ruby rbenv)
 
 # User configuration
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/home/rogier/Bin"
@@ -84,6 +93,7 @@ else
 fi
 
 # some generics
+alias vim='nvim'
 alias ls='ls -ls'
 alias ll='ls -lA'
 alias df='df -h'
@@ -99,33 +109,29 @@ alias ga='git add '
 alias gb='git branch '
 alias gc='git commit'
 alias gd='git diff'
-alias go='git checkout '
 alias gk='gitk --all&'
 alias gx='gitx --all'
-
-# ssh
-alias xs='ssh xs8'
-alias blij='ssh blij'
-alias aramaki='ssh -XC aramaki'
-alias x2x='ssh -XC ishikawa x2x -east -to :0'
 
 # tmux
 alias tm='tmuxinator'
 alias rm-api='tmuxinator start rm-api'
 alias rm-public-pages='tmuxinator start rm-public-pages'
-alias rm-rails='tmuxinator start rm-rails'
+alias rm-cfa='tmuxinator start rm-cfa'
+alias rm-cfa-run='tmuxinator start rm-cfa-run'
 alias rm-kubernetes='tmuxinator start rm-kubernetes'
 alias rm-dashboard-assets='tmuxinator start rm-dashboard-assets'
 alias rm-docker='tmuxinator start rm-docker'
-alias rm-mesos='tmuxinator start rm-mesos'
+alias devenv='tmuxinator start devenv'
 alias rm-data-admin='tmuxinator start rm-data-admin'
 alias rm-data-quality='tmuxinator start rm-data-quality'
 alias rm-oidc-engine='tmux start rm-oidc-engine'
 alias rm-masterdata-engine='tmux start rm-masterdata-engine'
 alias rm-scripts='tmuxinator rm-scripts'
 alias rm-system='tmuxinator start rm-system'
+alias rm-secrets'tmuxinator start rm-secrets'
 alias meia-ontwerp.nl='tmuxinator start meia-ontwerp.nl'
 alias funtime4kids.nl='tmuxinator start funtime4kids.nl'
+alias ktsjing='tmuxinator start ktsjing'
 
 # some ugly fixes
 alias apt='sudo apt-get update && sudo apt-get -y upgrade && \
@@ -160,13 +166,13 @@ alias dk-clean-volumes='printf "\n>>> Deleting stopped volumes \n\n" && docker v
 # Delete all stopped containers and untagged images.
 alias dk-clean='dk-clean-containers || true && dk-clean-images || true && dk-clean-volumes'
 
-alias pdi='clear && export KETTLE_HOME=$HOME/Conf/work/rm/kettle && cd $HOME/Applications/pdi80/data-integration && sh spoon.sh'
+alias pdi-rm='clear && export KETTLE_HOME=$HOME/Conf/work/rm/kettle && cd $HOME/Applications/pdi80/data-integration && sh spoon.sh'
+alias pdi='clear && export KETTLE_HOME=$HOME/git/ktsjing-etl/ && cd $HOME/Applications/pdi-8.2-ce/data-integration && sh spoon.sh'
 
-alias update-prod='dsh -c -g prod -M -w "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get clean"'
-alias update-nonprod='dsh -c -g nonprod -M -w "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get clean"'
 alias rmk8='export AWS_PROFILE=reelmetrics;export KUBECONFIG=/Users/rogier/.kube/reelmetrics/config-reelmetrics;echo Working with         - "eks-reelmetrics"'
 alias rmk8-prod='kubectl config use-context rmprod'
 alias rmk8-ingress='kubectl config use-context rmingress'
+alias kc='kubectl'
 
 # open crypted docs
 alias unlock='unlock-bin && unlock-conf && unlock-wip && unlock-personal && unlock-rm'
@@ -193,6 +199,8 @@ alias tf="terraform"
 
 alias ctags="`brew --prefix`/bin/ctags"
 alias ctags-here="ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)"
+
+unalias grv
 
 # Load up ssh keys
 ssh-add -A &> /dev/null
