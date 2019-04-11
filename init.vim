@@ -8,24 +8,65 @@ source ~/.vimrc.before
 endif
 
 " ================ Plugin manager ====================
-execute pathogen#infect()
-
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'airblade/vim-gitgutter'
-call vundle#end()            " required
-filetype plugin indent on    " required
-
+" Plug config
+call plug#begin('~/.config/nvim/plugged')
+  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'vim-scripts/bufexplorer.zip'
+  Plug 'mileszs/ack.vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'scrooloose/nerdtree'
+  " what files you’ve modified since your last commi
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'Chiel92/vim-autoformat'
+  Plug 'scrooloose/nerdcommenter'
+  Plug 'thoughtbot/vim-rspec'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'ervandew/supertab'
+  Plug 'tpope/vim-bundler'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-dispatch'
+  Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-rake'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-rbenv'
+  Plug 'tpope/vim-haml'
+  Plug 'tpope/vim-dotenv'
+  Plug 'ngmy/vim-rubocop'
+  Plug 'tpope/vim-git'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb'
+  Plug 'terryma/vim-multiple-cursors'
+  " Ruby and Rails plugins
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'janko-m/vim-test'
+  " Javascript plugins
+  Plug 'pangloss/vim-javascript'
+  Plug 'mxw/vim-jsx'
+  " var
+  Plug 'benmills/vimux'
+  Plug 'w0rp/ale' "ALE (Asynchronous Lint Engine) is a plugin for providing linting
+  Plug 'majutsushi/tagbar'
+  Plug 'BlakeWilliams/vim-pry'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'elzr/vim-json'
+  Plug 'stephpy/vim-yaml'
+  Plug 'cespare/vim-toml'
+  Plug 'Raimondi/delimitMate'
+  " Themes
+  Plug 'liuchengxu/space-vim-dark', { 'as': 'space-vim-dark'}
+  Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'ajmwagar/vim-deus', { 'as': 'vim-deus' }
+  Plug 'phanviet/vim-monokai-pro', { 'as': 'monokai-pro' }
+  Plug 'jacoborus/tender.vim', { 'as': 'tender'}
+  Plug 'connorholyday/vim-snazzy', { 'as': 'snazzy' }
+  Plug 'KeitaNakamura/neodark.vim'
+call plug#end()
 " ================ General Config ====================
 
 set number relativenumber       "Line numbers are good
@@ -36,6 +77,8 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
+set splitbelow                  "horizontally split below
+set splitright                  "vertical split right
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -121,48 +164,133 @@ nnoremap <silent> <Leader>] :exe "resize " . (winheight(0) * 2/3)<CR>
 " " Annotate every line
 "
 nmap <leader>b :%!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk<CR>;
-"
 "  " Annotate marked lines
 "
 nmap <leader>n :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
-"
 "  " Remove annotations
 "
 nmap <leader>c :%.!seeing_is_believing --clean<CR>;
 "
 "  " Mark the current line for annotation
-"
 nmap <leader>m A # => <Esc>
 "
 "  " Mark the highlighted lines for annotation
-"
 vmap <leader>m :norm A # => <Esc>
 
-
-" Enable nerd tree
-
-map <C-n> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
+" NerdTree settings
+" open and close NerdTree
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+" Open Nerdtree by default
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" automatically close NerdTree when you open a file<Paste>
+let NERDTreeQuitOnOpen = 0
+" Automatically delete the buffer of the file you just deleted with NerdTree 
+let NERDTreeAutoDeleteBuffer = 1
+" making it prettier
 let g:NERDTreeWinSize = 60
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+set modifiable
+
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+let g:spec_runner_dispatcher = "VtrSendCommand! {command}"
+
+" RSpec.vim mappings
+noremap <Leader>t :call RunCurrentSpecFile()<CR>
+noremap <Leader>s :call RunNearestSpec()<CR>
+noremap <Leader>l :call RunLastSpec()<CR>
+noremap <Leader>a :call RunAllSpecs()<CR>
+
+nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'irb'}<cr>
+
+" For ruby block selections
+runtime macros/matchit.vim
+
+" For Running plain Ruby test scripts
+nnoremap <leader>r :RunSpec<CR>
+nnoremap <leader>l :RunSpecLine<CR>
+nnoremap <leader>e :RunSpecLastRun<CR>
+nnoremap <leader>cr :RunSpecCloseResult<CR>
+
+" Move line down and up
+noremap <Leader>- :m .+1<CR>
+noremap <Leader>= :m .-2<CR>
+
+" Uppercase converter for insert and normal mode
+vnoremap <c-u> U
+
+" Open up vimrc in new pane
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" Source new changes
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Show hidden files in NERDtree
 let NERDTreeShowHidden=1
 
 " set colors
+if (empty($TMUX))
+  if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+    hi Comment cterm=italic
+  endif
+endif
 
 set background=dark
-set t_Co=256   " This is may or may not needed.
 
-"colorscheme solarized
+" solarized
+" colorscheme solarized
 " let g:solarized_termtrans = 1
-"colorscheme vividchalk
+" let g:airline_solarized_bg='dark'
+
+" colorscheme vividchalk
 " colorscheme PaperColor
 " colorscheme angr
 
-colorscheme space-vim-dark
-hi! Normal ctermbg=NONE guibg=NONE
-" set notermguicolors
-" set termguicolors
-" hi Comment cterm=italic
+" space vim dark
+" colorscheme space-vim-dark
+" let g:airline_theme='violet'
+" let g:space_vim_dark_background = 234
+set termguicolors
+hi LineNr ctermbg=NONE guibg=NONE
+
+colorscheme neodark
+let g:neodark#use_256color = 1 " default: 0
+let g:neodark#terminal_transparent = 1 " default: 0
+let g:neodark#solid_vertsplit = 1 " default: 0
+let g:lightline = {}
+let g:lightline.colorscheme = 'neodark'
+
+" colorscheme snazzy
+
+" colorscheme monokai_pro
+
+" colorscheme dracula
+
+" one theme
+" let g:airline_theme='one'
+" let g:one_allow_italics = 1
+" colorscheme one
+
+" colorscheme deus
+" let g:airline_theme='deus'
+" let g:deus_termcolors=256
+
+" colorscheme tender
+" let g:airline_theme = 'tender'
 
 " autoformating
 let g:autoformat_autoindent = 0
@@ -178,7 +306,7 @@ let g:NERDCompactSexyComs = 1
 "
 " " Align line-wise comment delimiters flush left instead of following code
 " indentation
-let g:NERDDefaultAlign = 'left'
+let g:NERDDefaultAlign = 'right'
 "
 " " Set a language to use its alternate delimiters by default
 let g:NERDAltDelims_java = 1
@@ -193,8 +321,33 @@ let g:NERDCommentEmptyLines = 1
 " " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+" ignore
+set wildignore+=*/node_modules/*,*/tmp/*
+
+nmap <F8> :TagbarToggle<CR>
+
+hi Normal guibg=NONE ctermbg=NONE
+
+" include pry
+nmap <leader>d :call pry#insert()<cr>
+
+" include puts
+nnoremap <Leader>pt oputs "#" * 60<C-M>puts "<C-R>=expand("%") . ':' . line(".")<CR>"<C-M>puts "*" * 60<esc>
+set mouse=a
+
+" script commit msg
+function! s:expand_commit_template() abort
+  let context = {
+        \ 'MY_BRANCH': matchstr(system('git rev-parse --abbrev-ref HEAD'), '\p\+'),
+        \ 'AUTHOR': 'Tommy A',
+        \ }
+
+  let lnum = nextnonblank(1)
+  while lnum && lnum < line('$')
+    call setline(lnum, substitute(getline(lnum), '\${\(\w\+\)}',
+          \ '\=get(context, submatch(1), submatch(0))', 'g'))
+    let lnum = nextnonblank(lnum + 1)
+  endwhile
+endfunction
+
+autocmd BufRead */.git/COMMIT_EDITMSG call s:expand_commit_template()
