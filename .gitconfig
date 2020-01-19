@@ -3,8 +3,6 @@
 	email = rogier@blijblijblij.com
 	signingkey = C2EDC5D56C66F3C868BF2524DE14FA776A474701
 [core]
-	autocrlf = input
-	safecrlf = warn
 	excludesfile = ~/.gitignore_global
 [gitflow "branch"]
     master = master
@@ -30,3 +28,7 @@
   ; template = ~/.git-commit-message
 [url "git@github.com:"]
     insteadOf = "https://github.com/"
+[protocol]
+	version = 2
+[tag]
+	forceSignAnnotated = true
