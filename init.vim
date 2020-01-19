@@ -13,15 +13,11 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'vim-scripts/bufexplorer.zip'
   Plug 'mileszs/ack.vim'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
   Plug 'scrooloose/nerdtree'
-  " what files you’ve modified since your last commi
-  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'Chiel92/vim-autoformat'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'scrooloose/nerdcommenter'
   Plug 'thoughtbot/vim-rspec'
-  Plug 'airblade/vim-gitgutter'
   Plug 'ervandew/supertab'
   Plug 'tpope/vim-bundler'
   Plug 'tpope/vim-commentary'
@@ -46,6 +42,24 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'janko-m/vim-test'
   " Javascript plugins
   Plug 'pangloss/vim-javascript'
+  Plug 'mattn/emmet-vim' " autocomplete html
+  " -------------------------------------------- REACT
+  " https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015
+  " lint - https://drivy.engineering/setting-up-vim-for-react/
+  " install locally
+  " yarn add eslint babel-eslint eslint-plugin-react prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-import stylelint eslint-config-airbnb eslint-plugin-jsx-a11y
+  " install globaly: npm i -g eslint babel-eslint eslint-plugin-react prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-import stylelint eslint-config-airbnb eslint-plugin-jsx-a11y
+  "//--------------------------------------------
+  Plug 'mxw/vim-jsx'
+  "Code linting
+  Plug 'w0rp/ale' "ALE (Asynchronous Lint Engine) is a plugin for providing linting
+  Plug 'skywind3000/asyncrun.vim'
+  "Prettier
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  "IntelliSense
+  " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+  Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+  " var
   Plug 'mxw/vim-jsx'
   " var
   Plug 'benmills/vimux'
@@ -59,6 +73,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'cespare/vim-toml'
   Plug 'Raimondi/delimitMate'
   " Themes
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'liuchengxu/space-vim-dark', { 'as': 'space-vim-dark'}
   Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'ajmwagar/vim-deus', { 'as': 'vim-deus' }
@@ -94,7 +110,11 @@ syntax on
 " the plugins.
 let mapleader=","
 set timeout timeoutlen=1500
-
+"more characters will be sent to the screen for redrawing
+set ttyfast
+"time waited for key press(es) to complete. It makes for a faster key response
+set ttimeout
+set ttimeoutlen=50
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
@@ -184,7 +204,7 @@ nnoremap <Leader>f :NERDTreeToggle<Enter>
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 " automatically close NerdTree when you open a file<Paste>
 let NERDTreeQuitOnOpen = 0
-" Automatically delete the buffer of the file you just deleted with NerdTree 
+" Automatically delete the buffer of the file you just deleted with NerdTree
 let NERDTreeAutoDeleteBuffer = 1
 " making it prettier
 let g:NERDTreeWinSize = 60
@@ -350,4 +370,29 @@ function! s:expand_commit_template() abort
   endwhile
 endfunction
 
+" emmet enabled
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+
 autocmd BufRead */.git/COMMIT_EDITMSG call s:expand_commit_template()
+
+autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+
+"------- Prettier config
+let g:prettier#exec_cmd_async = 1
+
+"------- Ale linter config
+let g:ale_fixers = {
+ \ 'javascript': ['eslint']
+ \ }
+
+let g:ale_fix_on_save = 1
+
+let g:move_key_modifier = 'M'
