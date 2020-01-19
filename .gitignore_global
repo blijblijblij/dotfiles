@@ -51,3 +51,8 @@ Thumbs.db
 *carte/.tmp
 
 *rds/.pgpass
+
+# ignore my vim files
+.vim/backups
+
+\.vim/plugged/
