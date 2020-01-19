@@ -22,6 +22,8 @@ export PYBIN=/usr/local/Cellar/python/3.7.3/bin
 
 export PATH=$PYBIN:$PATH
 
+export PATH=$PATH:/usr/local/lib/node_modules
+
 # tmuxinator
 source ~/.bin/tmuxinator.zsh
 
@@ -115,10 +117,13 @@ alias gx='gitx --all'
 # tmux
 alias tm='tmuxinator'
 alias rm-api='tmuxinator start rm-api'
+alias rm-dataprovider='tmuxinator start rm-dataprovider'
 alias rm-public-pages='tmuxinator start rm-public-pages'
 alias rm-cfa='tmuxinator start rm-cfa'
 alias rm-cfa-run='tmuxinator start rm-cfa-run'
-alias rm-kubernetes='tmuxinator start rm-kubernetes'
+alias rm-um='tmuxinator start rm-um'
+alias rm-um-run='tmuxinator start rm-um-run'
+alias rm-kubernetes='sh ~/Bin/rm-kubernetes.sh'
 alias rm-dashboard-assets='tmuxinator start rm-dashboard-assets'
 alias rm-docker='tmuxinator start rm-docker'
 alias devenv='tmuxinator start devenv'
@@ -128,6 +133,7 @@ alias rm-oidc-engine='tmux start rm-oidc-engine'
 alias rm-masterdata-engine='tmux start rm-masterdata-engine'
 alias rm-scripts='tmuxinator rm-scripts'
 alias rm-system='tmuxinator start rm-system'
+alias rm-reelscan='tmuxinator start rm-reelscan'
 alias rm-secrets'tmuxinator start rm-secrets'
 alias meia-ontwerp.nl='tmuxinator start meia-ontwerp.nl'
 alias funtime4kids.nl='tmuxinator start funtime4kids.nl'
@@ -153,6 +159,7 @@ alias serv='python -m SimpleHTTPServer 8088'
 alias dk='docker'
 alias dm='docker-machine'
 alias dc='docker-compose'
+alias dcr='docker-compose run'
 # Kill all running containers.
 alias dk-kill='docker kill $(docker ps -a -q)'
 # Remove all images
@@ -166,13 +173,14 @@ alias dk-clean-volumes='printf "\n>>> Deleting stopped volumes \n\n" && docker v
 # Delete all stopped containers and untagged images.
 alias dk-clean='dk-clean-containers || true && dk-clean-images || true && dk-clean-volumes'
 
-alias pdi-rm='clear && export KETTLE_HOME=$HOME/Conf/work/rm/kettle && cd $HOME/Applications/pdi80/data-integration && sh spoon.sh'
-alias pdi='clear && export KETTLE_HOME=$HOME/git/ktsjing-etl/ && cd $HOME/Applications/pdi-8.2-ce/data-integration && sh spoon.sh'
+alias pdi-rm='clear && export KETTLE_HOME=$HOME/Conf/pdi/work/ && cd $HOME/Applications/pdi-8.2-ce/data-integration && sh spoon.sh'
+# alias pdi='clear && export KETTLE_HOME=$HOME/git/ktsjing-etl/ && cd $HOME/Applications/pdi-8.2-ce/data-integration && sh spoon.sh'
+alias pdi-ktsjing='clear && export KETTLE_HOME=$HOME/Conf/pdi/ktsjing && cd $HOME/Applications/pdi-8.3-ce/data-integration && sh spoon.sh'
 
-alias rmk8='export AWS_PROFILE=reelmetrics;export KUBECONFIG=/Users/rogier/.kube/reelmetrics/config-reelmetrics;echo Working with         - "eks-reelmetrics"'
-alias rmk8-prod='kubectl config use-context rmprod'
-alias rmk8-ingress='kubectl config use-context rmingress'
 alias kc='kubectl'
+alias kx='kubectx'
+alias k8-rm='export AWS_PROFILE=reelmetrics;export KUBECONFIG=$HOME/.kube/reelmetrics/config;echo Working with rm eks'
+alias k8-k3s='export KUBECONFIG=$HOME/.kube/k3s/config;echo Working with k3s'
 
 # open crypted docs
 alias unlock='unlock-bin && unlock-conf && unlock-wip && unlock-personal && unlock-rm'
@@ -223,3 +231,6 @@ export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
 #heroku autocomplete setup 
 HEROKU_AC_ZSH_SETUP_PATH=/Users/rogier/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+# fix rails startup
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
