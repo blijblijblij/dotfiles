@@ -174,7 +174,7 @@ alias dk-clean-volumes='printf "\n>>> Deleting stopped volumes \n\n" && docker v
 alias dk-clean='dk-clean-containers || true && dk-clean-images || true && dk-clean-volumes'
 
 alias pdi-rm='clear && export KETTLE_HOME=$HOME/Conf/pdi/work/ && cd $HOME/Applications/pdi-8.2-ce/data-integration && sh spoon.sh'
-# alias pdi='clear && export KETTLE_HOME=$HOME/git/ktsjing-etl/ && cd $HOME/Applications/pdi-8.2-ce/data-integration && sh spoon.sh'
+alias pdi='clear && export KETTLE_HOME=$HOME/Conf/pdi/ && cd $HOME/Applications/9.0/data-integration && sh spoon.sh'
 alias pdi-ktsjing='clear && export KETTLE_HOME=$HOME/Conf/pdi/ktsjing && cd $HOME/Applications/pdi-8.3-ce/data-integration && sh spoon.sh'
 
 alias kc='kubectl'
@@ -234,3 +234,7 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/rogier/Library/Caches/heroku/autocomplete/zsh_se
 
 # fix rails startup
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
