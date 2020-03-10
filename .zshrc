@@ -95,7 +95,8 @@ else
 fi
 
 # some generics
-alias vim='nvim'
+alias vi='~/Bin/neovim-docker.sh'
+alias vim='~/Bin/neovim-docker.sh'
 alias ls='ls -ls'
 alias ll='ls -lA'
 alias df='df -h'
