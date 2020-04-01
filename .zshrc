@@ -95,8 +95,6 @@ else
 fi
 
 # some generics
-alias vi='~/Bin/neovim-docker.sh'
-alias vim='~/Bin/neovim-docker.sh'
 alias ls='ls -ls'
 alias ll='ls -lA'
 alias df='df -h'
@@ -115,45 +113,22 @@ alias gd='git diff'
 alias gk='gitk --all&'
 alias gx='gitx --all'
 
+# run apps in containers
+alias vi='~/Bin/neovim-docker.sh'
+alias vim='vi'
+alias aws='docker run --rm -ti -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
+
 # tmux
 alias tm='tmuxinator'
-alias rm-api='tmuxinator start rm-api'
-alias rm-dataprovider='tmuxinator start rm-dataprovider'
-alias rm-public-pages='tmuxinator start rm-public-pages'
-alias rm-cfa='tmuxinator start rm-cfa'
-alias rm-cfa-run='tmuxinator start rm-cfa-run'
-alias rm-um='tmuxinator start rm-um'
-alias rm-um-run='tmuxinator start rm-um-run'
-alias rm-kubernetes='sh ~/Bin/rm-kubernetes.sh'
-alias rm-dashboard-assets='tmuxinator start rm-dashboard-assets'
-alias rm-docker='tmuxinator start rm-docker'
-alias devenv='tmuxinator start devenv'
-alias rm-data-admin='tmuxinator start rm-data-admin'
-alias rm-data-quality='tmuxinator start rm-data-quality'
-alias rm-oidc-engine='tmux start rm-oidc-engine'
-alias rm-masterdata-engine='tmux start rm-masterdata-engine'
-alias rm-scripts='tmuxinator rm-scripts'
-alias rm-system='tmuxinator start rm-system'
-alias rm-reelscan='tmuxinator start rm-reelscan'
-alias rm-secrets'tmuxinator start rm-secrets'
-alias meia-ontwerp.nl='tmuxinator start meia-ontwerp.nl'
-alias funtime4kids.nl='tmuxinator start funtime4kids.nl'
-alias ktsjing='tmuxinator start ktsjing'
 
 # some ugly fixes
-alias apt='sudo apt-get update && sudo apt-get -y upgrade && \
+alias apt-update='sudo apt-get update && sudo apt-get -y upgrade && \
   sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && \
   sudo apt-get clean'
-alias screenwork='xrandr -s 1920x1080'
-alias screenmac='xrandr -s 1280x800'
 alias kssh='killall ssh && exit'
 alias fixdropbox='dropbox stop && sleep 10 && \
   echo fs.inotify.max_user_watches=10000000 | sudo tee -a /etc/sysctl.conf; \
   sudo sysctl -p && dropbox start'
-alias vncviewer='vncviewer -Fullscreen localhost:1'
-alias vncserver='~/Bin/vnc.sh'
-alias muttrm='mutt -F ~/.muttrcrm'
-alias nb='rm -f ~/.newsbeuter/cache.db && newsbeuter'
 alias serv='python -m SimpleHTTPServer 8088'
 
 # docker aliases
@@ -183,30 +158,12 @@ alias kx='kubectx'
 alias k8-rm='export AWS_PROFILE=reelmetrics;export KUBECONFIG=$HOME/.kube/reelmetrics/config;echo Working with rm eks'
 alias k8-k3s='export KUBECONFIG=$HOME/.kube/k3s/config;echo Working with k3s'
 
-# open crypted docs
-alias unlock='unlock-bin && unlock-conf && unlock-wip && unlock-personal && unlock-rm'
-alias lock-archive='fusermount -u ~/Crypt-archive'
-alias unlock-archive='encfs -i=5 ~/Dropbox/Crypt-archive ~/Crypt-archive'
-alias lock-bin='fusermount -u ~/Bin'
-alias unlock-bin='encfs -i=5 ~/Dropbox/Crypt-bin ~/Bin'
-alias lock-conf='fusermount -u ~/Conf'
-alias unlock-conf='encfs -i=5 ~/Dropbox/Crypt-conf ~/Conf'
-alias lock-git='fusermount -u ~/git'
-alias unlock-git='encfs -i=5 ~/Dropbox/Crypt-git ~/git -o volname="git"'
-alias lock-personal='fusermount -u ~/Documents'
-alias unlock-personal='encfs -i=5 ~/Dropbox/Crypt-personal ~/Documents'
-alias lock-rm='fusermount -u ~/Documents-rm'
-alias unlock-rm='encfs -i=5 ~/Dropbox/Crypt-rm ~/Documents-rm'
-alias lock-wip='fusermount -u ~/Wip'
-alias unlock-wip='encfs -i=5 ~/Dropbox/Crypt-wip ~/Wip'
-
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias lsrails="lsof -wni tcp:3000"
 
 alias tf="terraform"
 
-alias ctags="`brew --prefix`/bin/ctags"
 alias ctags-here="ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)"
 
 unalias grv

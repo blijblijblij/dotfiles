@@ -1,18 +1,18 @@
 [user]
-	name = Rogier Wessel
-	email = rogier@blijblijblij.com
-	signingkey = C2EDC5D56C66F3C868BF2524DE14FA776A474701
+  name = Rogier
+	email = rwessel@reelmetrics.com
+	signingKey = ""
 [core]
 	excludesfile = ~/.gitignore_global
 [gitflow "branch"]
-    master = master
-    develop = develop
+  master = master
+  develop = develop
 [gitflow "prefix"]
-    feature = feature/
-    release = release/
-    hotfix = hotfix/
-    support = support/
-    versiontag = release-
+  feature = feature/
+  release = release/
+  hotfix = hotfix/
+  support = support/
+  versiontag = release-
 [alias]
 	co = checkout
 	ci = commit
@@ -24,10 +24,9 @@
 [push]
 	default = simple
 [commit]
-  gpgsign = true
-  ; template = ~/.git-commit-message
+	gpgSign = true
 [url "git@github.com:"]
-    insteadOf = "https://github.com/"
+  insteadOf = "https://github.com/"
 [protocol]
 	version = 2
 [tag]

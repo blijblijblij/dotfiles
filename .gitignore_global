@@ -54,5 +54,4 @@ Thumbs.db
 
 # ignore my vim files
 .vim/backups
-
-\.vim/plugged/
+.vim/plugged/
