@@ -1,7 +1,7 @@
 [user]
   name = Rogier
 	email = rwessel@reelmetrics.com
-	signingKey = ""
+	signingKey = C2EDC5D56C66F3C868BF2524DE14FA776A474701
 [core]
 	excludesfile = ~/.gitignore_global
 [gitflow "branch"]
@@ -31,3 +31,5 @@
 	version = 2
 [tag]
 	forceSignAnnotated = true
+[gpg]
+	program = /usr/local/bin/gpg
