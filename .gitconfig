@@ -2,7 +2,6 @@
   name = Rogier
 	email = rwessel@reelmetrics.com
 	signingKey = C2EDC5D56C66F3C868BF2524DE14FA776A474701
-
 [core]
 	excludesfile = ~/.gitignore_global
 
