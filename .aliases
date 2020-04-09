@@ -1,0 +1,43 @@
+alias apt-update='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get clean'
+alias aws-rm='docker run --rm -ti -e AWS_PROFILE=reelmetrics -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
+alias cp='cp -i'
+alias ctags-here="ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)"
+alias dc='docker-compose'
+alias dcr='docker-compose run'
+alias df='df -h'
+alias dk-clean-containers='printf "\n>>> Deleting stopped containers\n\n" && docker rm -f $(docker ps -a -q)'# Delete all stopped containers.
+alias dk-clean-images='printf "\n>>> Deleting untagged images\n\n" && docker rmi -f $(docker images -q -f dangling=true)'# Delete all untagged images.
+alias dk-clean-volumes='printf "\n>>> Deleting stopped volumes \n\n" && docker volume rm -f $(docker volume ls --filter dangling=true -q)'# Deleta all dangling volumes
+alias dk-clean='dk-clean-containers || true && dk-clean-images || true && dk-clean-volumes'# Delete all stopped containers and untagged images.
+alias dk-kill='docker kill $(docker ps -a -q)'# Kill all running containers.
+alias dk-rm='docker rmi -f $(docker images -q)'# Remove all images
+alias dk='docker'
+alias dm='docker-machine'
+alias fixdropbox='dropbox stop && sleep 10 && echo fs.inotify.max_user_watches=10000000 | sudo tee -a /etc/sysctl.conf; sudo sysctl -p && dropbox start'
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias gk='gitk --all&'
+alias gs='git status '
+alias gx='gitx --all'
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias k8-k3s='export KUBECONFIG=$HOME/.kube/k3s/config;echo Working with k3s'
+alias k8-rm='export AWS_PROFILE=reelmetrics;export KUBECONFIG=$HOME/.kube/reelmetrics/config;echo Working with rm eks'
+alias kc='kubectl'
+alias kssh='killall ssh && exit'
+alias kx='kubectx'
+alias ll='ls -lA'
+alias localip="ipconfig getifaddr en0"
+alias ls='ls -ls'
+alias lsrails="lsof -wni tcp:3000"
+alias mv='mv -i'
+alias pdi-ktsjing='clear && export KETTLE_HOME=$HOME/Conf/pdi/ktsjing && cd $HOME/Applications/pdi-8.3-ce/data-integration && sh spoon.sh'
+alias pdi-rm='clear && export KETTLE_HOME=$HOME/Conf/pdi/work/ && cd $HOME/Applications/pdi-8.2-ce/data-integration && sh spoon.sh'
+alias pdi='clear && export KETTLE_HOME=$HOME/Conf/pdi/ && cd $HOME/Applications/9.0/data-integration && sh spoon.sh'
+alias rm='rm -i'
+alias serv='python -m SimpleHTTPServer 8088'
+alias tf="terraform"
+alias tm='tmuxinator'
+alias vi='~/Bin/neovim-docker.sh'
+alias vim='vi'

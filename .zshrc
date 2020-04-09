@@ -17,11 +17,6 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOROOT/bin
 
-export PYPATH=/usr/local/Cellar/python/3.7.3
-export PYBIN=/usr/local/Cellar/python/3.7.3/bin
-
-export PATH=$PYBIN:$PATH
-
 export PATH=$PATH:/usr/local/lib/node_modules
 
 # tmuxinator
@@ -89,83 +84,13 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='vi'
 else
-  export EDITOR='vim'
+  export EDITOR='vi'
 fi
 
-# some generics
-alias ls='ls -ls'
-alias ll='ls -lA'
-alias df='df -h'
-
-# Some more alias to avoid making mistakes:
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-
-# git
-alias gs='git status '
-alias ga='git add '
-alias gb='git branch '
-alias gc='git commit'
-alias gd='git diff'
-alias gk='gitk --all&'
-alias gx='gitx --all'
-
-# run apps in containers
-alias vi='~/Bin/neovim-docker.sh'
-alias vim='vi'
-alias aws='docker run --rm -ti -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
-
-# tmux
-alias tm='tmuxinator'
-
-# some ugly fixes
-alias apt-update='sudo apt-get update && sudo apt-get -y upgrade && \
-  sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && \
-  sudo apt-get clean'
-alias kssh='killall ssh && exit'
-alias fixdropbox='dropbox stop && sleep 10 && \
-  echo fs.inotify.max_user_watches=10000000 | sudo tee -a /etc/sysctl.conf; \
-  sudo sysctl -p && dropbox start'
-alias serv='python -m SimpleHTTPServer 8088'
-
-# docker aliases
-alias dk='docker'
-alias dm='docker-machine'
-alias dc='docker-compose'
-alias dcr='docker-compose run'
-# Kill all running containers.
-alias dk-kill='docker kill $(docker ps -a -q)'
-# Remove all images
-alias dk-rm='docker rmi -f $(docker images -q)'
-# Delete all stopped containers.
-alias dk-clean-containers='printf "\n>>> Deleting stopped containers\n\n" && docker rm -f $(docker ps -a -q)'
-# Delete all untagged images.
-alias dk-clean-images='printf "\n>>> Deleting untagged images\n\n" && docker rmi -f $(docker images -q -f dangling=true)'
-# Deleta all dangling volumes
-alias dk-clean-volumes='printf "\n>>> Deleting stopped volumes \n\n" && docker volume rm -f $(docker volume ls --filter dangling=true -q)'
-# Delete all stopped containers and untagged images.
-alias dk-clean='dk-clean-containers || true && dk-clean-images || true && dk-clean-volumes'
-
-alias pdi-rm='clear && export KETTLE_HOME=$HOME/Conf/pdi/work/ && cd $HOME/Applications/pdi-8.2-ce/data-integration && sh spoon.sh'
-alias pdi='clear && export KETTLE_HOME=$HOME/Conf/pdi/ && cd $HOME/Applications/9.0/data-integration && sh spoon.sh'
-alias pdi-ktsjing='clear && export KETTLE_HOME=$HOME/Conf/pdi/ktsjing && cd $HOME/Applications/pdi-8.3-ce/data-integration && sh spoon.sh'
-
-alias kc='kubectl'
-alias kx='kubectx'
-alias k8-rm='export AWS_PROFILE=reelmetrics;export KUBECONFIG=$HOME/.kube/reelmetrics/config;echo Working with rm eks'
-alias k8-k3s='export KUBECONFIG=$HOME/.kube/k3s/config;echo Working with k3s'
-
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
-alias lsrails="lsof -wni tcp:3000"
-
-alias tf="terraform"
-
-alias ctags-here="ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)"
-
+# include my aliases from file
+source $HOME/.aliases
 unalias grv
 
 # Load up ssh keys
@@ -192,7 +117,6 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/rogier/Library/Caches/heroku/autocomplete/zsh_se
 
 # fix rails startup
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
