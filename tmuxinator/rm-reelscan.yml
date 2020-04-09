@@ -1,0 +1,8 @@
+name: rm-reelscan
+root: ~/git/rm-reelscan-api
+
+on_project_start: ctags -r --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
+
+windows:
+  - editor: vi .
+  - server: dip rails s

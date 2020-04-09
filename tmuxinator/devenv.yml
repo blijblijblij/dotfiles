@@ -1,0 +1,6 @@
+name: devev
+root: ~/git/devenv
+
+windows:
+  - editor: vi .
+  - git: #

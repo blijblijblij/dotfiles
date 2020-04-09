@@ -1,0 +1,7 @@
+name: ktsjing
+root: ~/git/ktsjing
+
+on_project_start: ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
+
+windows:
+  - editor: vim .

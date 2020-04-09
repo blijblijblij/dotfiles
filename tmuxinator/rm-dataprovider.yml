@@ -1,0 +1,8 @@
+name: rm-dataprovider
+root: ~/git/rm-dataprovider
+
+on_project_start: ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
+
+windows:
+  - editor: vi .
+  - git: # 

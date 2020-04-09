@@ -1,0 +1,9 @@
+name: rm-docker
+root: ~/git/rm-docker
+
+windows:
+  - editor:
+      layout: main-horizontal
+      panes:
+        - vi .
+        - # bash

@@ -1,0 +1,10 @@
+name: blijblijblij
+root: ~/git/blijblijblij.com
+
+windows:
+  - editor: vi .
+  - server:
+      layout: main-horizontal
+      panes:
+        - hugo server --buildDrafts
+        - #

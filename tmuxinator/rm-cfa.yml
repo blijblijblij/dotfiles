@@ -1,0 +1,8 @@
+name: rm-cfa
+root: ~/git/rm-cfa
+
+on_project_start: ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
+
+windows:
+  - editor: vi .
+  - git: #

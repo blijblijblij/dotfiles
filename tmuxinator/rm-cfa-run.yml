@@ -1,0 +1,5 @@
+name: rm-cfa-run
+root: ~/git/rm-cfa
+
+windows:
+  - server: dip rails s

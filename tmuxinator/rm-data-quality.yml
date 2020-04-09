@@ -1,0 +1,8 @@
+name: rm-data-quality
+root: ~/git/rm-data-quality
+
+on_project_start: ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
+
+windows:
+  - editor: vi .
+  - git: #

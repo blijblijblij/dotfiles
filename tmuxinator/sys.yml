@@ -1,0 +1,10 @@
+name: sys
+root: ~/
+
+windows:
+  - editor:
+      layout: main-horizontal
+      panes:
+        - htop
+        - nload
+  - server: sudo openvpn ~/.vpn/nonprod.ovpn

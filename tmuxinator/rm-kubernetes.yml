@@ -1,0 +1,9 @@
+name: rm-kubernetes
+root: ~/git/rm-kubernetes
+
+pre_window:
+  - export AWS_PROFILE=reelmetrics
+  - export KUBECONFIG=$HOME/.kube/reelmetrics/config
+
+windows:
+  - editor: vi .

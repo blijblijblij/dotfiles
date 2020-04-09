@@ -1,0 +1,8 @@
+name: rm-public-pages
+root: ~/git/rm-public-pages
+
+on_project_start: ctags -R --languages=html,javascript --exclude=.git
+
+windows:
+  - editor: vi .
+  - server: cd client && npm start

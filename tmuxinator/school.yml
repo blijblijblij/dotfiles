@@ -1,0 +1,13 @@
+name: school
+root: ~/git/schooldehofakker.nl
+
+on_project_start: ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
+on_project_start: bundle install
+
+windows:
+  - editor: vim .
+  - server:
+      layout: main-horizontal
+      panes:
+        - jekyll serve
+        - #

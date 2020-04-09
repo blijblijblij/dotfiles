@@ -1,0 +1,5 @@
+name: rm-system
+root: ~/git/rm-system
+
+windows:
+  - editor: vi .

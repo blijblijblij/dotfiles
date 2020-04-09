@@ -1,0 +1,13 @@
+name: rm-kubernetes-run
+root: ~/git/rm-kubernetes
+
+pre_window:
+  - export AWS_PROFILE=reelmetrics
+  - export KUBECONFIG=$HOME/.kube/reelmetrics/config
+
+windows:
+  - k8:
+      layout: main-horizontal
+      panes:
+        - watch -n 10 kubectl get pod,deployment --namespace=production
+        - # bash

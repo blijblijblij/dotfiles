@@ -1,0 +1,7 @@
+name: rm-data-admin-run
+root: ~/git/rm-data-admin
+
+on_project_start: ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
+
+windows:
+  - server: dip rails s

@@ -1,0 +1,15 @@
+name: personal
+root: ~/
+
+windows:
+  - m-p: mutt -F ~/.mutt/account.personal
+  - m-x: mutt -F ~/.mutt/account.xs4all
+  - m-r: mutt -F ~/.mutt/account.rm
+  - m-s: mutt -F ~/.mutt/account.samen
+  - rss: rm -f ~/.newsbeuter/cache.db && newsbeuter
+  - tw: ~/ttytter.sh
+  - sys:
+      layout: main-horizontal
+      panes:
+        - htop
+        - nload

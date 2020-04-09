@@ -1,0 +1,8 @@
+name: chat
+root: ~/
+
+windows:
+  - sl-rm: weechat-curses --dir .weechat-work
+  - sl-amsrb: weechat-curses --dir .weechat-amsrb
+  - sl-kettle: weechat-curses --dir .weechat-kettle
+  - sl-pentaho: weechat-curses --dir .weechat-pentaho
