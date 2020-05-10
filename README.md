@@ -1,2 +1,10 @@
 # dotfiles
-My personal conf files
+My personal configuration files
+
+## Installing
+
+```
+git clone https://github.com/blijblijblij/dotfiles.git
+
+~/git/install.sh
+```
