@@ -34,10 +34,11 @@ alias lsrails="lsof -wni tcp:3000"
 alias mv='mv -i'
 alias pdi-ktsjing='clear && export KETTLE_HOME=$HOME/Conf/pdi/ktsjing && cd $HOME/Applications/pdi-8.3-ce/data-integration && sh spoon.sh'
 alias pdi-rm='clear && export KETTLE_HOME=$HOME/Conf/pdi/work/ && cd $HOME/Applications/pdi-8.2-ce/data-integration && sh spoon.sh'
-alias pdi='clear && export KETTLE_HOME=$HOME/Conf/pdi/ && cd $HOME/Applications/9.0/data-integration && sh spoon.sh'
+alias pdi='clear && export KETTLE_HOME=$HOME/Conf/pdi/ && cd $HOME/Applications/pdi-ce-8.3.0.0-371/data-integration && sh spoon.sh'
 alias rm='rm -i'
 alias serv='python -m SimpleHTTPServer 8088'
 alias tf="terraform"
 alias tm='tmuxinator'
 alias vi='~/Bin/neovim-docker.sh'
 alias vim='vi'
+alias x2x='ssh -XC motoko x2x -west -to :0.0'
