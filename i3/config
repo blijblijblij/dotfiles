@@ -199,7 +199,7 @@ workspace $ws5 output $monitor_one
 workspace $ws6 output $monitor_two
 
 # set default background
-exec always feh --bg-fill ~/.config/i3/bg.jp
+exec --no-startup-id feh --bg-scale /home/rogier/.config/i3/bg.jp
 
 # Workspace specific startups
 exec --no-startup-id i3-msg 'workspace $ws1; exec gnome-terminal'
