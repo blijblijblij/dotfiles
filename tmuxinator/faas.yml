@@ -1,0 +1,22 @@
+# $HOME/.config/tmuxinator/faas.yml
+
+name: faas
+root: ~/git/faas/faas-function-ecoin-checker
+
+pre_window:
+  - export KUBECONFIG=$HOME/.kube/k3s/config
+  - export OPENFAAS_URL=https://faas.blijblijblij.com
+  - export OPENFAAS_PASSWORD=$(kubectl -n openfaas get secret basic-auth -o jsonpath="{.data.basic-auth-password}" | base64 --decode)
+
+windows:
+  - editor: vi .
+  - openfaas:
+      layout: main-horizontal
+      panes:
+        - watch -n 10 kubectl get pod,service,deployment --namespace=openfaas-fn -o wide
+        - /usr/local/bin/faas-cli login -u admin -p $OPENFAAS_PASSWORD && /usr/local/bin/faas-cli list
+  - openfaas-fn:
+      layout: main-horizontal
+      panes:
+        - watch -n 10 kubectl get pod,service,deployment --namespace=openfaas -o wide
+        - #bloeb
