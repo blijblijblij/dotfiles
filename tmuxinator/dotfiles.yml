@@ -1,0 +1,6 @@
+name: dottfiles
+root: ~/git/dotfiles
+
+windows:
+  - editor: vi .
+  - git: #

@@ -1,0 +1,12 @@
+name: happy
+root: ~/git/happyhappy.us
+
+on_project_start: ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
+
+windows:
+  - editor: vi .
+  - server:
+      layout: main-horizontal
+      panes:
+        - dip up rails redis webpacker
+        - git status

@@ -1,0 +1,32 @@
+# $HOME/.config/tmuxinator/k3s.yml
+
+name: k3s
+root: ~/git/k3s
+
+pre_window:
+  - export KUBECONFIG=$HOME/.kube/k3s/config
+  # - export OPENFAAS_URL=http://k3s-rpi-cp:8080
+  # - export OPENFAAS_PASSWORD=$(kubectl -n openfaas get secret basic-auth -o jsonpath="{.data.basic-auth-password}" | base64 --decode)
+
+windows:
+  - editor: vim .
+  - kube-system:
+      layout: main-horizontal
+      panes:
+        - watch -n 10 kubectl get pod,service,deployment --namespace=var -o wide
+        - watch -n 10 kubectl get node
+  - kube-public:
+      layout: main-horizontal
+      panes:
+        - watch -n 120 kubectl get pod,service,deployment --namespace=kube-system -o wide
+        - #bloeb
+  # - openfaas:
+  #     layout: main-horizontal
+  #     panes:
+  #       - watch -n 10 kubectl get pod,service,deployment --namespace=openfaas -o wide
+  #       - /usr/local/bin/faas-cli login -u admin -p $OPENFAAS_PASSWORD && /usr/local/bin/faas-cli list
+  # - openfaas-fn:
+  #     layout: main-horizontal
+  #     panes:
+  #       - watch -n 10 kubectl get pod,service,deployment --namespace=openfaas-fn -o wide
+  #       - #bloeb
