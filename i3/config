@@ -198,9 +198,6 @@ workspace $ws4 output $monitor_two
 workspace $ws5 output $monitor_one
 workspace $ws6 output $monitor_two
 
-# set default background
-exec --no-startup-id feh --bg-scale /home/rogier/.config/i3/bg.jp
-
 # Workspace specific startups
 exec --no-startup-id i3-msg 'workspace $ws1; exec gnome-terminal'
 exec --no-startup-id i3-msg 'workspace $ws2; exec gnome-terminal'
@@ -210,3 +207,10 @@ exec --no-startup-id i3-msg 'workspace $ws5; exec gnome-terminal'
 exec --no-startup-id i3-msg 'workspace $ws6; exec gnome-terminal'
 
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+
+# enable transparancy via compton
+exec --no-startup-id compton
+
+# set default background
+exec --no-startup-id /usr/bin/feh --bg-scale /home/rogier/.config/i3/bg.jpg 
+
